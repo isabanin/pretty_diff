@@ -1,0 +1,41 @@
+h1. PrettyDiff Ruby Gem
+
+A tiny library for generating pretty HTML listings for Unified Diff format inputs. Heavily used in "Beanstalk":http://beanstalkapp.com application.
+
+h1. Installation
+
+<code><pre>
+gem install pretty_diff
+</pre></code>
+
+h1. Example
+
+A quick example will tell it all:
+
+<code><pre>
+udiff = File.read("awesome.diff")
+pretty = PrettyDiff::Diff.new(udiff)
+pretty.to_html
+</pre></code>
+
+That's about it.
+
+h1. Features
+
+The library is really easy to read and change. All HTML is concentrated in a single place — html_generator.rb; so it's very easy to customize the output to suit your needs.
+
+By default PrettyDiff will generate HTML that can be easily colored with a CSS that you can find here.
+
+PrettyDiff will generate 2 columns of line numbers, as it's usually done for diffs. These columns are copy & paste safe, means that line numbers won't be copied when you copy diff contents.
+
+Tabs will be automatically converted to double spaces.
+
+h1. Stuff To Do
+
+The test suit can be somewhat improved.
+
+h1. History
+
+The library was extracted from Beanstalk during the awesome Wildbit Open Source Fridays.
+
+Copyright (c) 2010 Ilya Sabanin, Wildbit; see LICENSE for details.

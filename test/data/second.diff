@@ -1,0 +1,308 @@
+--- Revision 1053
++++ Revision 2195
+@@ -11,6 +11,8 @@
+ 	<link rel="stylesheet" href="../stylesheets/codecolorer.css" type="text/css" media="screen, projection" />
+ 	<link rel="stylesheet" href="../stylesheets/modalbox.css" type="text/css" media="screen, projection" />
+ 	<link rel="stylesheet" href="../stylesheets/print.css" type="text/css" media="print" />
++	<link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
++	<link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+ 	<script type="text/javascript" src="../javascripts/prototype.js" charset="utf-8"></script>
+ 	<script type="text/javascript" src="../javascripts/scriptaculous.js" charset="utf-8"></script>
+ 	<script type="text/javascript" src="../javascripts/application.js" charset="utf-8"></script>
+@@ -19,12 +21,10 @@
+ <body>
+ <div id="container">
+ 	<div id="header">
+-		<ul class="metanav">
+-			<li class="active"><a href="hq-dashboard.html" title="Dashboard"><span>Dashboard</span></a></li>
+-			<li><a href="hq-profile.html" title="My Profile"><span>My Profile</span></a></li>
+-			<li><a href="help.html" title="Help"><span>Help</span></a></li>
+-			<li><a href="logout.html" title="Logout"><span>Logout</span></a></li>
+-		</ul>
++		<div class="metanav">
++			<p class="meta-global"><a href="hq-dashboard.html" title="Dashboard">Dashboard</a> &bull; <a href="help-overview.html" title="Help">Help</a></p>
++			<p class="meta-personal"><em>Andrew Okonetschnikow</em> &bull; <a href="hq-profile.html" title="My Profile">My Profile</a> &bull; <a href="logout.html" title="Logout">Logout</a></p>
++		</div>
+ 		
+ 		<h1>Wildbit</h1>
+ 		<ul class="mainnav">
+@@ -49,175 +49,141 @@
+ 
+ 			<form action="search-results.html" method="get" class="search-form">
+ 				<fieldset>
+-					<legend><b>Search in all repositories</b></legend>
+ 					<div class="form-row">
+-						<input type="search" name="search" id="search" size="50" value="keyword" style="width: 90%" /> <input type="submit" value="Go!" style="width: 5% " />
++						<input type="search" name="search" id="search" size="50" value="keyword" />
++						<select>
++							<option>All repositories</option>
++							<option disabled="disabled"></option>
++							<option>Beanstalk</option>
++							<option>Newsberry</option>
++							<option>Wildbit Public</option>
++						</select>
++						<input type="submit" value="Search" />
+ 					</div>
+ 				</fieldset>
+ 			</form>
+ 
+ 
+-			<h2><b>In comments <span class="light">(9)</span></b></h2>
+-
+ 			<div class="activity-timeline search-results">
++
+ 				<div class="rev-item">
+ 					<h3><a href="repo-activity-changeset.html" title="See revision changeset">765</a></h3>
+-					<p class="rev-repo label-red"><a href="repo-activity.html">Newsberry</a></p>
+-					<p class="rev-user">eugene, <span class="rev-date">10/21/07</span></p>
+-
++					<p class="rev-repo label-red"><a href="adm-repo-activity.html">Newsberry</a></p>
++					<p class="rev-user"><img src="../images/users/default.gif" alt="Default" /></p>
+ 					<div class="rev-comment">
+-						<p>
+-							<a href="repo-activity-changeset.html" title="See revision changeset">BugzID: 762 (Green <span class="marked">arrow</span> in Vibe Meter helper)</a>
+-						</p>
++						<p><a href="repo-activity-changeset.html" title="See revision changeset">BugzID: 762 (Green <span class="highlight">arrow</span> in Vibe Meter helper)</a></p>
++						<p class="rev-meta-info">by Eugene Fedorenko (eugene) <span class="time">Feb 06, 2009 15:30:00 GMT</span></p>
+ 					</div>
+ 				</div>
+ 
+ 				<div class="rev-item">
+ 					<h3><a href="repo-activity-changeset.html" title="See revision changeset">1062</a></h3>
+-					<p class="rev-repo label-orange"><a href="repo-activity.html">Nuzizo</a></p>
+-					<p class="rev-user">andrew, <span class="rev-date">10/27/07</span></p>
+-
++					<p class="rev-repo label-orange"><a href="adm-repo-activity.html">Nuzizo</a></p>
++					<p class="rev-user"><img src="../images/users/andrew.gif" width="32" height="32" alt="Andrew" /></p>
+ 					<div class="rev-comment">
+-						<p>
+-							<a href="repo-activity-changeset.html" title="See revision changeset">BugzID:689 Dashboard: removed stats box, added hint to profile meter; My <span class="marked">friends updates</span> redesigned; Added colors for profile filling small meters;</a>
+-						</p>
++						<p><a href="repo-activity-changeset.html" title="See revision changeset">BugzID:689 Dashboard: removed stats box, added hint to <span class="highlight">profile meter</span>; My friends updates redesigned; Added colors for profile filling small meters;</a></p>
++						<p class="rev-meta-info">by Andrew Okonetchnikow (andrew) <span class="time">Feb 05, 2009 10:30:00 GMT</span></p>
+ 					</div>
+ 				</div>
+ 
+ 				<div class="rev-item">
+-					<h3><a href="repo-activity-changeset.html" title="See revision changeset">343</a></h3>
+-					<p class="rev-repo label-yellow"><a href="repo-activity.html">Project Alpha</a></p>
+-					<p class="rev-user">dmitry, <span class="rev-date">10/17/07</span></p>
+-
++					<h3><a href="repo-activity-changeset.html" title="See revision changeset">3</a></h3>
++					<p class="rev-repo label-yellow"><a href="adm-repo-activity.html">Project Alpha</a></p>
++					<p class="rev-user"><img src="../images/users/dmitry.gif" alt="Dmitry" /></p>
+ 					<div class="rev-comment">
+-						<p>
+-							<a href="repo-activity-changeset.html" title="See revision changeset">Updated copy in minor areas. After speaking with <span class="marked">Darren</span>, there should be a second revision.</a>
+-						</p>
++						<p><a href="repo-activity-changeset.html" title="See revision changeset">Updated copy in minor areas. After speaking with Darren, there should be a <span class="highlight">second revision</span>.</a></p>
++						<p class="rev-meta-info">by Dmitry Sabanin (dmitry) <span class="time">Jan 01, 2008 11:00:00 GMT</span></p>
+ 					</div>
+ 				</div>
+ 
+ 				<div class="rev-item">
+-					<h3><a href="repo-activity-changeset.html" title="See revision changeset">1060</a></h3>
+-					<p class="rev-repo label-red"><a href="repo-activity.html">Newsberry</a></p>
+-					<p class="rev-user">eugene, <span class="rev-date">09/13/07</span></p>
+-
++					<h3><a href="repo-activity-changeset.html" title="See revision changeset">765</a></h3>
++					<p class="rev-repo label-red"><a href="adm-repo-activity.html">Newsberry</a></p>
++					<p class="rev-user"><img src="../images/users/default.gif" alt="Default" /></p>
+ 					<div class="rev-comment">
+-						<p>
+-							<a href="repo-activity-changeset.html" title="See revision changeset">BugzID: 762 (Green arrow in <span class="marked">Vibe Meter</span> helper)</a>
+-						</p>
++						<p><a href="repo-activity-changeset.html" title="See revision changeset">BugzID: 762 (Green <span class="highlight">arrow</span> in Vibe Meter helper)</a></p>
++						<p class="rev-meta-info">by Eugene Fedorenko (eugene) <span class="time">Feb 06, 2009 15:30:00 GMT</span></p>
+ 					</div>
+ 				</div>
+ 
+ 				<div class="rev-item">
+-					<h3><a href="repo-activity-changeset.html" title="See revision changeset">1059</a></h3>
+-					<p class="rev-repo label-green"><a href="repo-activity.html">PodcastPeople</a></p>
+-					<p class="rev-user">andrew, <span class="rev-date">11/27/07</span></p>
+-
++					<h3><a href="repo-activity-changeset.html" title="See revision changeset">1062</a></h3>
++					<p class="rev-repo label-orange"><a href="adm-repo-activity.html">Nuzizo</a></p>
++					<p class="rev-user"><img src="../images/users/andrew.gif" width="32" height="32" alt="Andrew" /></p>
+ 					<div class="rev-comment">
+-						<p>
+-							<a href="repo-activity-changeset.html" title="See revision changeset">BugzID: 762 (Green arrow in <span class="marked">Vibe Meter</span> helper)</a>
+-						</p>
++						<p><a href="repo-activity-changeset.html" title="See revision changeset">BugzID:689 Dashboard: removed stats box, added hint to <span class="highlight">profile meter</span>; My friends updates redesigned; Added colors for profile filling small meters;</a></p>
++						<p class="rev-meta-info">by Andrew Okonetchnikow (andrew) <span class="time">Feb 05, 2009 10:30:00 GMT</span></p>
+ 					</div>
+ 				</div>
+-				<p class="more"><a href="#">See more results in comments&hellip;</a></p>
+-			</div>
+ 
+-
+-			<h2><b>In files <span class="light">(7)</span></b></h2>
+-
+-			<div class="activity-timeline search-results">
+ 				<div class="rev-item">
+-					<h3><a href="repo-activity-changeset.html" title="See revision changeset">765</a></h3>
+-					<p class="rev-repo label-red"><a href="repo-activity.html">Newsberry</a></p>
+-					<p class="rev-user">eugene, <span class="rev-date">10/21/07</span></p>
+-
+-					<div class="file-desc">
+-						<h3 class="diff-title" id="diff01">trunk/application/app/controllers/logs_controller.rb</h3>
+-						<div class="codecolorer-container javascript">
+-							<div class="codecolorer">
+-								<ol start="21">
+-									<li class="li1"><div class="de1">getWidth: <span class="kw2">function</span><span class="br0">&#40;</span><span class="marked">element</span><span class="br0">&#41;</span> <span class="br0">&#123;</span></div></li>
+-									<li class="li1"><div class="de1">&nbsp; &nbsp; <span class="kw1">return</span> $<span class="br0">&#40;</span>element<span class="br0">&#41;</span>.<span class="me1">getDimensions</span><span class="br0">&#40;</span><span class="br0">&#41;</span>.<span class="me1">width</span>;</div></li>
+-								</ol>
+-							</div>
+-						</div>
++					<h3><a href="repo-activity-changeset.html" title="See revision changeset">3</a></h3>
++					<p class="rev-repo label-yellow"><a href="adm-repo-activity.html">Project Alpha</a></p>
++					<p class="rev-user"><img src="../images/users/dmitry.gif" alt="Dmitry" /></p>
++					<div class="rev-comment">
++						<p><a href="repo-activity-changeset.html" title="See revision changeset">Updated copy in minor areas. After speaking with Darren, there should be a <span class="highlight">second revision</span>.</a></p>
++						<p class="rev-meta-info">by Dmitry Sabanin (dmitry) <span class="time">Jan 01, 2008 11:00:00 GMT</span></p>
+ 					</div>
+ 				</div>
+ 
+ 				<div class="rev-item">
+-					<h3><a href="repo-activity-changeset.html" title="See revision changeset">1062</a></h3>
+-					<p class="rev-repo label-orange"><a href="repo-activity.html">Nuzizo</a></p>
+-					<p class="rev-user">andrew, <span class="rev-date">10/27/07</span></p>
+-
+-					<div class="file-desc">
+-						<h3 class="diff-title" id="diff01">trunk/application/app/controllers/logs_controller.rb</h3>
+-						<div class="codecolorer-container javascript">
+-							<div class="codecolorer">
+-								<ol start="623">
+-									<li class="li1"><div class="de1">&nbsp; &nbsp; els.<span class="me1">display</span> = <span class="st0">'block'</span>;</div></li>
+-									<li class="li1"><div class="de1">&nbsp; &nbsp; <span class="kw2">var</span> original<span class="marked">Width</span> = element.<span class="me1">clientWidth</span>;</div></li>
+-								</ol>
+-							</div>
+-						</div>
++					<h3><a href="repo-activity-changeset.html" title="See revision changeset">765</a></h3>
++					<p class="rev-repo label-red"><a href="adm-repo-activity.html">Newsberry</a></p>
++					<p class="rev-user"><img src="../images/users/default.gif" alt="Default" /></p>
++					<div class="rev-comment">
++						<p><a href="repo-activity-changeset.html" title="See revision changeset">BugzID: 762 (Green <span class="highlight">arrow</span> in Vibe Meter helper)</a></p>
++						<p class="rev-meta-info">by Eugene Fedorenko (eugene) <span class="time">Feb 06, 2009 15:30:00 GMT</span></p>
+ 					</div>
+ 				</div>
+ 
+ 				<div class="rev-item">
+-					<h3><a href="repo-activity-changeset.html" title="See revision changeset">343</a></h3>
+-					<p class="rev-repo label-yellow"><a href="repo-activity.html">Project Alpha</a></p>
+-					<p class="rev-user">dmitry, <span class="rev-date">10/17/07</span></p>
+-
+-					<div class="file-desc">
+-						<h3 class="diff-title" id="diff01">trunk/application/app/controllers/logs_controller.rb</h3>
+-						<div class="codecolorer-container javascript">
+-							<div class="codecolorer">
+-								<ol start="73">
+-									<li class="li1"><div class="de1">&nbsp; &nbsp; <span class="kw1">if</span> <span class="br0">&#40;</span>display != <span class="st0">'none'</span> &amp;&amp; display != <span class="kw2">null</span><span class="br0">&#41;</span> <span class="co1">// Safari bug</span></div></li>
+-									<li class="li1"><div class="de1">&nbsp; &nbsp; &nbsp; <span class="kw1">return</span> <span class="br0">&#123;</span>width: <span class="marked">element</span>.<span class="me1">offsetWidth</span>, height: element.<span class="me1">offsetHeight</span><span class="br0">&#125;</span>;</div></li>
+-								</ol>
+-							</div>
+-						</div>
++					<h3><a href="repo-activity-changeset.html" title="See revision changeset">1062</a></h3>
++					<p class="rev-repo label-orange"><a href="adm-repo-activity.html">Nuzizo</a></p>
++					<p class="rev-user"><img src="../images/users/andrew.gif" width="32" height="32" alt="Andrew" /></p>
++					<div class="rev-comment">
++						<p><a href="repo-activity-changeset.html" title="See revision changeset">BugzID:689 Dashboard: removed stats box, added hint to <span class="highlight">profile meter</span>; My friends updates redesigned; Added colors for profile filling small meters;</a></p>
++						<p class="rev-meta-info">by Andrew Okonetchnikow (andrew) <span class="time">Feb 05, 2009 10:30:00 GMT</span></p>
+ 					</div>
+ 				</div>
+ 
+ 				<div class="rev-item">
+-					<h3><a href="repo-activity-changeset.html" title="See revision changeset">1060</a></h3>
+-					<p class="rev-repo label-red"><a href="repo-activity.html">Newsberry</a></p>
+-					<p class="rev-user">eugene, <span class="rev-date">09/13/07</span></p>
+-
+-					<div class="file-desc">
+-						<h3 class="diff-title" id="diff01">trunk/application/app/controllers/logs_controller.rb</h3>
+-						<div class="codecolorer-container javascript">
+-							<div class="codecolorer">
+-								<ol start="145">
+-									<li class="li1"><div class="de1">&nbsp; &nbsp; els.<span class="me1"><span class="marked">visibility</span></span> = <span class="st0">'hidden'</span>;</div></li>
+-									<li class="li1"><div class="de1">&nbsp; &nbsp; els.<span class="me1">position</span> = <span class="st0">'absolute'</span>;</div></li>
+-								</ol>
+-							</div>
+-						</div>
++					<h3><a href="repo-activity-changeset.html" title="See revision changeset">3</a></h3>
++					<p class="rev-repo label-yellow"><a href="adm-repo-activity.html">Project Alpha</a></p>
++					<p class="rev-user"><img src="../images/users/dmitry.gif" alt="Dmitry" /></p>
++					<div class="rev-comment">
++						<p><a href="repo-activity-changeset.html" title="See revision changeset">Updated copy in minor areas. After speaking with Darren, there should be a <span class="highlight">second revision</span>.</a></p>
++						<p class="rev-meta-info">by Dmitry Sabanin (dmitry) <span class="time">Jan 01, 2008 11:00:00 GMT</span></p>
+ 					</div>
+ 				</div>
+ 
+ 				<div class="rev-item">
+-					<h3><a href="repo-activity-changeset.html" title="See revision changeset">1059</a></h3>
+-					<p class="rev-repo label-green"><a href="repo-activity.html">PodcastPeople</a></p>
+-					<p class="rev-user">andrew, <span class="rev-date">11/27/07</span></p>
+-
+-					<div class="file-desc">
+-						<h3 class="diff-title" id="diff01">trunk/application/app/controllers/logs_controller.rb</h3>
+-						<div class="codecolorer-container javascript">
+-							<div class="codecolorer">
+-								<ol start="572">
+-									<li class="li1"><div class="de1">&nbsp; &nbsp; els.<span class="me1">display</span> = <span class="st0">'block'</span>;</div></li>
+-									<li class="li1"><div class="de1">&nbsp; &nbsp; <span class="kw2">var</span> original<span class="marked">Width</span> = element.<span class="me1">clientWidth</span>;</div></li>
+-								</ol>
+-							</div>
+-						</div>
++					<h3><a href="repo-activity-changeset.html" title="See revision changeset">765</a></h3>
++					<p class="rev-repo label-red"><a href="adm-repo-activity.html">Newsberry</a></p>
++					<p class="rev-user"><img src="../images/users/default.gif" alt="Default" /></p>
++					<div class="rev-comment">
++						<p><a href="repo-activity-changeset.html" title="See revision changeset">BugzID: 762 (Green <span class="highlight">arrow</span> in Vibe Meter helper)</a></p>
++						<p class="rev-meta-info">by Eugene Fedorenko (eugene) <span class="time">Feb 06, 2009 15:30:00 GMT</span></p>
+ 					</div>
+ 				</div>
+ 
+-				<p class="more"><a href="#">See more results in files&hellip;</a></p>
++			</div>
+ 
++			<div class="paginator">
++				<p class="status">Showing <strong>1&ndash;20</strong> of 2532 commits</p>
++				<div class="pageList">
++					<span class="disabled">&larr;&nbsp;Previous</span>
++					<span class="current">1</span>
++					<a class="page" href="/page2/">2</a>
++					<a class="page" href="/page3/">3</a>
++					<a class="page" href="/page4/">4</a>
++					<a class="page" href="/page5/">5</a>
++					<a class="page" href="/page6/">6</a>
++					<a class="page" href="/page7/">7</a>
++					<span class="break">...</span>
++					<a class="page" href="/page57/">57</a>
++					<a class="page end" href="/page58/">58</a>
++					<a class="link" href="#2">Next&nbsp;&rarr;</a>
++				</div>
+ 			</div>
+ 
+ 		</div>
+@@ -225,10 +191,18 @@
+ 	</div>
+ 
+ 	<div id="footer">
+-		<a class="beanstalk-logo" href="../../public/" title="Beanstalk &nbsp; version control for team leads">Beanstalk &nbsp; version control for team leads</a>
+-		<p class="vcard">&copy; 2007, <a href="http://www.wildbit.com/" class="fn org url">Wildbit LLC</a>. All rights reserved.</p>
+-		<p><a href="textpage-privacy.html">Privacy Policy</a> <span class="sep">&bull;</span> <a href="textpage-terms.html">Terms of Use</a></p>
++	  <div class="wildbit">
++		  <a class="beanstalk-logo" href="../../public/" title="Beanstalk &nbsp; version control for team leads">&nbsp;</a>
++		  <p class="vcard">&copy; 2007, <a href="http://www.wildbit.com/" class="fn org url">Wildbit LLC</a>. All rights reserved.</p>
++		  <p><a href="textpage-privacy.html">Privacy Policy</a> <span class="sep">&bull;</span> <a href="textpage-terms.html">Terms of Use</a></p>
++	  </div>
++	  
++	  <div class="engine-yard">
++	    <a class="ey-logo" href="http://engineyard.com" title="Engine Yard: Fully-Managed Ruby &amp; Rails Hosting and Deployment">&nbsp;</a>
++	    <p>Hosting provided by our</p>
++	    <p>partners at <a href="http://engineyard.com" title="Engine Yard: Fully-Managed Ruby &amp; Rails Hosting and Deployment">Engine Yard</a></p>
++	  </div>
+ 	</div>
+-
++</div>
+ </body>
+ </html>
+\ No newline at end of file

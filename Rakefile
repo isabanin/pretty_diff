@@ -5,8 +5,10 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "pretty_diff"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = "Library for converting unified diff format into HTML listings."
+    gem.description = "PrettyDiff is easily customizable library for creating full featured HTML
+                       listings out of unified diff format. Include copy&paste-safe line numbers
+                       and built-in syntax highlighting."
     gem.email = "ilya.sabanin@gmail.com"
     gem.homepage = "http://github.com/isabanin/pretty_diff"
     gem.authors = ["Ilya Sabanin"]
@@ -21,7 +23,7 @@ end
 require 'rake/testtask'
 Rake::TestTask.new(:test) do |test|
   test.libs << 'lib' << 'test'
-  test.pattern = 'test/**/test_*.rb'
+  test.pattern = 'test/**/*_test.rb'
   test.verbose = true
 end
 
