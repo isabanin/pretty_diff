@@ -13,7 +13,7 @@ class ChunkTest < Test::Unit::TestCase
   context "Diff Chunk" do
     setup do
       @diff = PrettyDiff::Diff.new read_diff('second.diff')
-      @chunk = @diff.chunks.first
+      @chunk = @diff.send(:chunks).first
       @chunk.send(:find_lines!)
     end
     

@@ -11,11 +11,11 @@ class PrettyDiff::Diff
     PrettyDiff::HtmlGenerator.generate_diff(chunks)
   end
 
+private
+
   def chunks
     @_chunks ||= find_chunks(input)
   end
-
-private
 
   def find_chunks(text)
     meta_info = text.scan(CHUNK_REGEXP)

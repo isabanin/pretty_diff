@@ -9,8 +9,8 @@ class DiffTest < Test::Unit::TestCase
     end
     
     should "generate correct amount of chunks for each diff" do
-      assert_equal 2, @small_diff.chunks.size
-      assert_equal 4, @big_diff.chunks.size
+      assert_equal 2, @small_diff.send(:chunks).size
+      assert_equal 4, @big_diff.send(:chunks).size
     end
     
     should "generate HTML representation without errors" do
