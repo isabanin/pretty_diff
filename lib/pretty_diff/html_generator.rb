@@ -6,7 +6,8 @@
 #
 # By default all HTML is generated with a built-in support for coloring using a
 # CSS file that's available here:
-# http://make me please
+#
+# http://ilya.sabanin.ru/projects/pretty_diff_example.html
 #
 module PrettyDiff::HtmlGenerator #:nodoc:
   extend self
