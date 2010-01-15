@@ -24,7 +24,7 @@ The library is really easy to read and change. All HTML is concentrated in a sin
 
 By default PrettyDiff will generate HTML that can be easily colored with the CSS that you can find in the example above.
 
-PrettyDiff will generate 2 columns of line numbers, as it's usually done for diffs. These columns are copy & paste safe, means that line numbers won't be copied when you copy diff contents.
+PrettyDiff will generate 2 columns of line numbers, as it's usually done for diffs. These columns are copy/paste safe, means that line numbers won't be copied when you copy diff contents.
 
 Tabs will be automatically converted to double spaces.
 

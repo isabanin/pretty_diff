@@ -6,9 +6,9 @@ begin
   Jeweler::Tasks.new do |gem|
     gem.name = "pretty_diff"
     gem.summary = "Library for converting unified diff format into HTML listings."
-    gem.description = "PrettyDiff is easily customizable library for creating full featured HTML
-                       listings out of unified diff format. Include copy&paste-safe line numbers
-                       and built-in syntax highlighting."
+    gem.description = "PrettyDiff is a highly customizable library for creating fully featured HTML
+                       listings out of unified diff format strings.
+                       Include copy/paste-safe line numbers and built-in syntax highlighting."
     gem.email = "ilya.sabanin@gmail.com"
     gem.homepage = "http://github.com/isabanin/pretty_diff"
     gem.authors = ["Ilya Sabanin"]
