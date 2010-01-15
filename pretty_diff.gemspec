@@ -5,14 +5,14 @@
 
 Gem::Specification.new do |s|
   s.name = %q{pretty_diff}
-  s.version = "0.3.0"
+  s.version = "0.3.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ilya Sabanin"]
   s.date = %q{2010-01-15}
-  s.description = %q{PrettyDiff is easily customizable library for creating full featured HTML
-                       listings out of unified diff format. Include copy&paste-safe line numbers
-                       and built-in syntax highlighting.}
+  s.description = %q{PrettyDiff is a highly customizable library for creating fully featured HTML
+                       listings out of unified diff format strings.
+                       Include copy/paste-safe line numbers and built-in syntax highlighting.}
   s.email = %q{ilya.sabanin@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -59,12 +59,12 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
-      s.add_development_dependency(%q<thoughtbot-shoulda>, [">= 0"])
+      s.add_development_dependency(%q<shoulda>, [">= 0"])
     else
-      s.add_dependency(%q<thoughtbot-shoulda>, [">= 0"])
+      s.add_dependency(%q<shoulda>, [">= 0"])
     end
   else
-    s.add_dependency(%q<thoughtbot-shoulda>, [">= 0"])
+    s.add_dependency(%q<shoulda>, [">= 0"])
   end
 end
 
