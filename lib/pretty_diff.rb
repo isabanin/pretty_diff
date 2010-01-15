@@ -1,4 +1,4 @@
-module PrettyDiff  
+module PrettyDiff #:nodoc:
 end
 
 require 'pretty_diff/support'

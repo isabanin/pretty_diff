@@ -1,4 +1,4 @@
-class Object
+class Object #:nodoc:
   
   def returning(value)
     yield(value)

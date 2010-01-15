@@ -1,0 +1,41 @@
+= Pretty Diff
+
+A tiny library for generating pretty HTML listings for unified Diff format. Heavily used in Beanstalk (http://beanstalkapp.com) application.
+
+== Installation
+
+ gem install pretty_diff
+
+== Example
+
+A quick example will tell it all:
+
+ udiff = File.read("awesome.diff")
+ pretty = PrettyDiff::Diff.new(udiff)
+ pretty.to_html
+
+Wrap it with HTML, add the CSS file that you can find below and you will get something like this:
+
+
+
+== Features
+
+The library is really easy to read and change. All HTML is concentrated in a single place -- HtmlGenerator; so it's very easy to customize the output to suit your needs.
+
+By default PrettyDiff will generate HTML that can be easily colored with the CSS that you can find here: http://logintocss
+
+PrettyDiff will generate 2 columns of line numbers, as it's usually done for diffs. These columns are copy & paste safe, means that line numbers won't be copied when you copy diff contents.
+
+Tabs will be automatically converted to double spaces.
+
+HTML tags will be automatically escaped from the input string.
+
+== To Do
+
+The test suit can be somewhat improved.
+
+== History
+
+The library was extracted from Beanstalk during the awesome Wildbit Open Source Fridays.
+
+Copyright (c) 2010 Ilya Sabanin, Wildbit; see LICENSE for details.

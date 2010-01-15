@@ -22,11 +22,11 @@ class ChunkTest < Test::Unit::TestCase
     end
     
     should "find correct amount of left line numbers" do
-      assert @chunk.line_numbers.left_column.compact.size == 6
+      assert @chunk.send(:line_numbers).send(:left_column).compact.size == 6
     end
     
     should "find correct amount of right line numbers" do
-      assert @chunk.line_numbers.right_column.compact.size == 8
+      assert @chunk.send(:line_numbers).send(:right_column).compact.size == 8
     end
     
     should "find correct amount of lines" do

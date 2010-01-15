@@ -1,4 +1,14 @@
-module PrettyDiff::HtmlGenerator
+#
+# This is where all HTML stuff is kept. The module is responsible for converting
+# various PrettyDiff classes into HTML.
+# 
+# By customizing this file you can suit the output precisely to your needs.
+#
+# By default all HTML is generated with a built-in support for coloring using a
+# CSS file that's available here:
+# http://make me please
+#
+module PrettyDiff::HtmlGenerator #:nodoc:
   extend self
   
   def intro

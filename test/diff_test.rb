@@ -1,4 +1,5 @@
 require File.dirname(__FILE__) + '/helper'
+require 'cgi'
 
 class DiffTest < Test::Unit::TestCase
   context "Pretty Diff" do
@@ -16,6 +17,12 @@ class DiffTest < Test::Unit::TestCase
     should "generate HTML representation without errors" do
       assert @small_diff.to_html
       assert @big_diff.to_html
+    end
+    
+    should "escape HTML from the input string" do
+      text = "<b>Funky HTML</b>"
+      diff = PrettyDiff::Diff.new(text)
+      assert_equal "&lt;b&gt;Funky HTML&lt;/b&gt;", diff.input
     end
   
   end
