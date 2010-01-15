@@ -14,7 +14,7 @@ A quick example will tell it all:
  pretty = PrettyDiff::Diff.new(udiff)
  pretty.to_html
 
-Wrap it with HTML, add the CSS file that you can find below and you will get something like this:
+Wrap it with HTML, add some styles and you will get something like this:
 
 http://ilya.sabanin.ru/projects/pretty_diff_example.html
 
