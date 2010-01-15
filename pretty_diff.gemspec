@@ -32,6 +32,7 @@ Gem::Specification.new do |s|
      "lib/pretty_diff/line.rb",
      "lib/pretty_diff/line_numbers.rb",
      "lib/pretty_diff/support.rb",
+     "pretty_diff.gemspec",
      "test/chunk_test.rb",
      "test/data/first.diff",
      "test/data/second.diff",
