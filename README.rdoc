@@ -38,4 +38,8 @@ The test suit can be somewhat improved.
 
 The library was extracted from Beanstalk during the awesome Wildbit Open Source Fridays.
 
+Read more about Open Source Fridays here:
+
+http://wildbit.com/blog/2010/01/15/open-source-fridays-at-wildbit/
+
 Copyright (c) 2010 Ilya Sabanin, Wildbit; see LICENSE for details.
