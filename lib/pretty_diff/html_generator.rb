@@ -31,15 +31,15 @@ module PrettyDiff::HtmlGenerator #:nodoc:
   end
   
   def added_line(text)
-    %Q[<span class="gi">#{text}</span>]
+    %Q[<div><span class="gi">#{text}</span></div>]
   end
 
   def deleted_line(text)
-    %Q[<span class="gd">#{text}</span>]
+    %Q[<div><span class="gd">#{text}</span></div>]
   end
 
   def not_modified_line(text)
-    text
+    %Q[<div>#{text}</div>]
   end
 
   def chunk_end
@@ -68,6 +68,11 @@ module PrettyDiff::HtmlGenerator #:nodoc:
   end
   
   def generate_line_numbers(left, right)
+    [left, right].each do |column|
+      column.map! do |num|
+        if num.nil? then '' else %Q{<a href="#">#{num}</a>} end
+      end
+    end
     line_numbers_column(left.join("\n")) +
     line_numbers_column(right.join("\n"))
   end
