@@ -2,21 +2,28 @@
 # Represent a single line of the diff.
 #
 class PrettyDiff::Line #:nodoc:
-  attr_reader :input
   
-  def initialize(input)
+  attr_reader :diff, :input, :number
+  
+  def initialize(diff, input, options={})
+    @diff = diff
     @input = input
+    @number = options[:number]
+  end
+  
+  def name
+    "#{diff.name}-line#{number}-content"
   end
   
   # Generate HTML presentation for a Line. Return a string.
   def to_html
-    PrettyDiff::HtmlGenerator.generate_line(self)
+    generator.generate
   end
   
   # Prepare Line contents for injection into HTML structure.
   # Currently used for replacing Tab symbols with spaces.
   # Return a string.
-  def rendered
+  def format
     input.gsub("\t", '  ')
   end
   
@@ -50,4 +57,11 @@ class PrettyDiff::Line #:nodoc:
   def not_modified?
     status == :not_modified
   end
+  
+private
+
+  def generator
+    @_generator ||= PrettyDiff::LineGenerator.new(self)
+  end
+  
 end

@@ -32,5 +32,6 @@ class ChunkTest < Test::Unit::TestCase
     should "find correct amount of lines" do
       assert @chunk.lines.size == 8
     end
+
   end
 end

@@ -4,10 +4,15 @@
 #
 class PrettyDiff::LineNumbers #:nodoc:
   
-  attr_reader :meta_info
+  attr_reader :diff, :meta_info
   
-  def initialize(meta)
+  def initialize(diff, meta)
+    @diff = diff
     @meta_info = meta
+  end
+  
+  def name(num, align)
+    "#{diff.name}-line#{num}-#{align}"
   end
   
   # Increase either left column of numbers, right or both of them; depending on the Line status.
@@ -23,14 +28,7 @@ class PrettyDiff::LineNumbers #:nodoc:
   
   # Generate HTML presentation for a both line numbers columns. Return a string.
   def to_html
-    PrettyDiff::HtmlGenerator.generate_line_numbers(left_column, right_column)
-  end
-  
-private
-  
-  # Search for information about line numbers changes provided by unified diff format.
-  def scan_meta(target)
-    meta_info.scan(target).flatten.first
+    generator.generate
   end
   
   def left_column
@@ -39,6 +37,17 @@ private
   
   def right_column
     @right_column ||= []
+  end
+  
+private
+
+  def generator
+    @_generator ||= PrettyDiff::LineNumbersGenerator.new(self)
+  end
+  
+  # Search for information about line numbers changes provided by unified diff format.
+  def scan_meta(target)
+    meta_info.scan(target).flatten.first
   end
   
   # Return starting number for the left column according to unified diff information.
@@ -54,7 +63,7 @@ private
   # Increase left column line number by one.
   def increase_left
     left_column  << increase_or_start(:left)
-    right_column << nil    
+    right_column << nil
   end
   
   # Increase right column line number by one.
