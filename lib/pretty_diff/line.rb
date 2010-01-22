@@ -3,16 +3,10 @@
 #
 class PrettyDiff::Line #:nodoc:
   
-  attr_reader :diff, :input, :number
+  attr_reader :input
   
-  def initialize(diff, input, options={})
-    @diff = diff
+  def initialize(input)
     @input = input
-    @number = options[:number]
-  end
-  
-  def name
-    "#{diff.name}-line#{number}-content"
   end
   
   # Generate HTML presentation for a Line. Return a string.

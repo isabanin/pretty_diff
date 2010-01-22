@@ -13,27 +13,11 @@ class PrettyDiff::LineNumbersGenerator
 private
 
   def left_column
-    insert_anchors(line_numbers.left_column, :left).join("\n")
+    line_numbers.left_column.join("\n")
   end
   
   def right_column
-    insert_anchors(line_numbers.right_column, :right).join("\n")
-  end
-
-  def insert_anchors(array, align)
-    returning(result = []) do
-      array.each_with_index do |num, idx|
-        if num.nil?
-          result << ''
-        else
-          result << anchor_html(idx, num, align)
-        end
-      end
-    end
-  end
-  
-  def anchor_html(idx, num, align)
-    %Q{<a href="#" id="#{line_numbers.name(idx, align)}">#{num}</a>}
+    line_numbers.right_column.join("\n")
   end
   
   def column_html(text)

@@ -2,10 +2,9 @@
 # Represent a single piece of a diff.
 # 
 class PrettyDiff::Chunk #:nodoc:
-  attr_reader :diff, :meta_info, :input, :lines
+  attr_reader :meta_info, :input, :lines
   
-  def initialize(diff, meta_info, input)
-    @diff = diff
+  def initialize(meta_info, input)
     @meta_info = meta_info
     @input = input
   end
@@ -23,7 +22,7 @@ class PrettyDiff::Chunk #:nodoc:
   # IMPORTANT! Before calling this method it's essential to call "find_lines!" first,
   # otherwise the array will be empty.
   def line_numbers
-    @_line_numbers ||= PrettyDiff::LineNumbers.new(diff, meta_info)
+    @_line_numbers ||= PrettyDiff::LineNumbers.new(meta_info)
   end
   
 private
@@ -36,8 +35,8 @@ private
   # Return an array of Line objects.
   def find_lines!
     returning(@lines = []) do
-      input.split(/\r?\n/).each_with_index do |line_str, idx|
-        line = PrettyDiff::Line.new(diff, line_str, :number => idx)
+      input.split(/\r?\n/).each do |line_str|
+        line = PrettyDiff::Line.new(line_str)
         next if line.ignore?
         @lines << line
         line_numbers.act_on_line(line)

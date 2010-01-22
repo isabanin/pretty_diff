@@ -4,15 +4,10 @@
 #
 class PrettyDiff::LineNumbers #:nodoc:
   
-  attr_reader :diff, :meta_info
+  attr_reader :meta_info
   
-  def initialize(diff, meta)
-    @diff = diff
+  def initialize(meta)
     @meta_info = meta
-  end
-  
-  def name(num, align)
-    "#{diff.name}-line#{num}-#{align}"
   end
   
   # Increase either left column of numbers, right or both of them; depending on the Line status.

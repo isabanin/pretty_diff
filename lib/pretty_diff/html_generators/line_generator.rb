@@ -23,7 +23,7 @@ private
   end
   
   def wrapper_html
-    %Q[<div id="#{line.name}">] +
+    %Q[<div>] +
     yield +
     %Q[</div>]
   end
