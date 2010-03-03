@@ -3,9 +3,10 @@
 #
 class PrettyDiff::Line #:nodoc:
   
-  attr_reader :input
+  attr_reader :diff, :input
   
-  def initialize(input)
+  def initialize(diff, input)
+    @diff = diff
     @input = input
   end
   

@@ -4,9 +4,10 @@
 #
 class PrettyDiff::LineNumbers #:nodoc:
   
-  attr_reader :meta_info
+  attr_reader :diff, :meta_info
   
-  def initialize(meta)
+  def initialize(diff, meta)
+    @diff = diff
     @meta_info = meta
   end
   

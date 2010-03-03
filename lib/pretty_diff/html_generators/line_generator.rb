@@ -23,9 +23,11 @@ private
   end
   
   def wrapper_html
-    %Q[<div>] +
-    yield +
-    %Q[</div>]
+    if line.diff.options[:wrap_lines]
+      "<div> #{yield} </div>"
+    else
+      yield
+    end
   end
 
   def added_html(text)

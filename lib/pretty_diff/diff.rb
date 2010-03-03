@@ -14,11 +14,15 @@ require 'cgi'
 class PrettyDiff::Diff
   CHUNK_REGEXP = /@@ .+ @@\n/
 
-  attr_reader :input
+  attr_reader :input, :options
 
-  # Create new Diff object. Accept a String in unified diff format.
-  def initialize(unified_diff)
+  # Create new Diff object.
+  # Accept a String in unified diff format and options hash.
+  # Currrent options:
+  # * wrap_lines -- wrap each line in code block with <div> element.
+  def initialize(unified_diff, options={})
     @input = escape_html(unified_diff)
+    @options = options
   end
 
   # Generate HTML presentation. Return a string.
@@ -45,7 +49,7 @@ private
       split = text.split(CHUNK_REGEXP)
       split.shift
       split.each_with_index do |lines, idx|        
-        chunks << PrettyDiff::Chunk.new(meta_info[idx], lines)
+        chunks << PrettyDiff::Chunk.new(self, meta_info[idx], lines)
       end
     end
   end
