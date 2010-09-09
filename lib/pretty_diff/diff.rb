@@ -45,7 +45,8 @@ private
   # Return an array of Chunks.
   def find_chunks(text)
     meta_info = text.scan(CHUNK_REGEXP)
-    returning(chunks = []) do
+    chunks = []
+    chunks.tap do
       split = text.split(CHUNK_REGEXP)
       split.shift
       split.each_with_index do |lines, idx|

@@ -35,7 +35,8 @@ private
   # Parse the input searching for lines. Initialize Line object for every line.
   # Return an array of Line objects.
   def find_lines!
-    returning(@lines = []) do
+    @lines = []
+    @lines.tap do
       input.split(/\r?\n/).each do |line_str|
         line = PrettyDiff::Line.new(diff, line_str)
         next if line.ignore?
