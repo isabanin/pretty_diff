@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{pretty_diff}
-  s.version = "0.6.0"
+  s.version = "0.7.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ilya Sabanin"]
-  s.date = %q{2010-03-03}
+  s.date = %q{2010-09-09}
   s.description = %q{PrettyDiff is a highly customizable library for creating fully featured HTML
                        listings out of unified diff format strings.
                        Include copy/paste-safe line numbers and built-in syntax highlighting.}
@@ -34,7 +34,6 @@ Gem::Specification.new do |s|
      "lib/pretty_diff/html_generators/line_numbers_generator.rb",
      "lib/pretty_diff/line.rb",
      "lib/pretty_diff/line_numbers.rb",
-     "lib/pretty_diff/support.rb",
      "pretty_diff.gemspec",
      "test/chunk_test.rb",
      "test/data/first.diff",

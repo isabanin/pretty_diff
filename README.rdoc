@@ -42,4 +42,8 @@ Read more about Open Source Fridays here:
 
 http://wildbit.com/blog/2010/01/15/open-source-fridays-at-wildbit/
 
+== Contributors
+
+1. mrsimo
+
 Copyright (c) 2010 Ilya Sabanin, Wildbit; see LICENSE for details.
