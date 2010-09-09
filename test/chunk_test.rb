@@ -16,19 +16,19 @@ class ChunkTest < Test::Unit::TestCase
       @chunk = @diff.send(:chunks).first
       @chunk.send(:find_lines!)
     end
-    
+
     should "generate HTML without errors" do
       assert @chunk.to_html
     end
-    
+
     should "find correct amount of left line numbers" do
       assert @chunk.send(:line_numbers).send(:left_column).compact.size == 6
     end
-    
+
     should "find correct amount of right line numbers" do
       assert @chunk.send(:line_numbers).send(:right_column).compact.size == 8
     end
-    
+
     should "find correct amount of lines" do
       assert @chunk.lines.size == 8
     end

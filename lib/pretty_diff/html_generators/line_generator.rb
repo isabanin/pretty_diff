@@ -1,11 +1,11 @@
 class PrettyDiff::LineGenerator
-  
+
   attr_reader :line
-  
+
   def initialize(line)
     @line = line
   end
-  
+
   def generate
     if line.added?
       added_html(content)
@@ -15,13 +15,13 @@ class PrettyDiff::LineGenerator
       not_modified_html(content)
     end
   end
-  
+
 private
 
   def content
     @_content ||= line.format
   end
-  
+
   def wrapper_html
     if line.diff.options[:wrap_lines]
       "<div> #{yield} </div>"
@@ -41,5 +41,5 @@ private
   def not_modified_html(text)
     wrapper_html { %Q[#{text}] }
   end
-  
+
 end

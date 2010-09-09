@@ -1,22 +1,22 @@
 #
 # Represent a single piece of a diff.
-# 
+#
 class PrettyDiff::Chunk #:nodoc:
   attr_reader :diff, :meta_info, :input, :lines
-  
+
   def initialize(diff, meta_info, input)
     @diff = diff
     @meta_info = meta_info
     @input = input
   end
-  
+
   # Generate HTML presentation for a Chunk. Return a string.
   def to_html
     # We have to find lines before we can call line numbers methods.
     find_lines!
     generator.generate
   end
-  
+
   # Return LineNumbers object that represents two columns of numbers
   # that will be displayed on the left of the HTML presentation.
   #
@@ -25,7 +25,7 @@ class PrettyDiff::Chunk #:nodoc:
   def line_numbers
     @_line_numbers ||= PrettyDiff::LineNumbers.new(diff, meta_info)
   end
-  
+
 private
 
   def generator

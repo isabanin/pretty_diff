@@ -3,7 +3,7 @@ require 'cgi'
 #
 # Main class to interact with. In fact this is the only class you should interact with
 # when using the library.
-# 
+#
 # === Usage example
 #  pretty = PrettyDiff::Diff.new(udiff)
 #  pretty.to_html
@@ -26,10 +26,10 @@ class PrettyDiff::Diff
   end
 
   # Generate HTML presentation. Return a string.
-  def to_html    
+  def to_html
     generator.generate
   end
-  
+
   # Return an array of Chunk objects that Diff found in the input.
   def chunks
     @_chunks ||= find_chunks(input)
@@ -48,12 +48,12 @@ private
     returning(chunks = []) do
       split = text.split(CHUNK_REGEXP)
       split.shift
-      split.each_with_index do |lines, idx|        
+      split.each_with_index do |lines, idx|
         chunks << PrettyDiff::Chunk.new(self, meta_info[idx], lines)
       end
     end
   end
-  
+
   def escape_html(input_text)
     CGI.escapeHTML(input_text)
   end
