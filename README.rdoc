@@ -16,7 +16,7 @@ A quick example will tell it all:
 
 Wrap it with HTML, add some styles and you will get something like this:
 
-http://ilya.sabanin.ru/projects/pretty_diff_example.html
+http://rubybrothers.ru/assets/2010/1/16/pretty_diff.jpg
 
 == Features
 
