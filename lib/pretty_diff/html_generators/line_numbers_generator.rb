@@ -21,8 +21,8 @@ private
   end
 
   def column_html(text)
-    %Q[<td width="2%" class="linenos"><pre>
-#{text}</pre></td>]
+    %Q[<div class="code-lines"><pre>
+#{text}</pre></div>]
   end
 
 end

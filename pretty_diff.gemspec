@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{pretty_diff}
-  s.version = "0.7.0"
+  s.version = "0.8.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ilya Sabanin"]
-  s.date = %q{2010-09-09}
+  s.date = %q{2010-12-21}
   s.description = %q{PrettyDiff is a highly customizable library for creating fully featured HTML
                        listings out of unified diff format strings.
                        Include copy/paste-safe line numbers and built-in syntax highlighting.}
@@ -46,7 +46,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/isabanin/pretty_diff}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.5}
+  s.rubygems_version = %q{1.3.7}
   s.summary = %q{Library for converting unified diff format into HTML listings.}
   s.test_files = [
     "test/chunk_test.rb",
@@ -60,7 +60,7 @@ Gem::Specification.new do |s|
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
-    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
+    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_development_dependency(%q<shoulda>, [">= 0"])
     else
       s.add_dependency(%q<shoulda>, [">= 0"])

@@ -14,15 +14,15 @@ class PrettyDiff::DiffGenerator
 private
 
   def intro_html
-    %Q[<table class="highlighttable">]
+    %Q[]
   end
 
   def chunk_separator_html
-    %Q[<tr class="chunk_separator"><td colspan="3"></td></tr>]
+    %Q[]
   end
 
   def outro_html
-    %Q[</table>]
+    %Q[]
   end
 
 end

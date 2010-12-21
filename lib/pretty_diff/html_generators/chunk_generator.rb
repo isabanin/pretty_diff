@@ -18,18 +18,24 @@ private
   def content
     chunk.lines.map{|l| l.to_html }.join("\n")
   end
+  
+  def wrapper_class
+    klass = "code-viewer"
+    klass << ' chunk' if chunk.diff.chunks.size > 1
+    klass
+  end
 
   def start_html
-    %Q[<tr>]
+    %Q[<div class="#{ wrapper_class }">]
   end
 
   def code_html(text)
-    %Q[<td class="code"><div class="highlight"><pre>
-#{text}</pre></div></td>]
+    %Q[<div class="code-list"><pre>
+#{text}</pre></div>]
   end
 
   def end_html
-    %Q[</tr>]
+    %Q[</div>]
   end
 
 end
