@@ -20,7 +20,7 @@ private
   end
   
   def wrapper_class
-    klass = "code-viewer"
+    klass = 'highlight'
     klass << ' chunk' if chunk.diff.chunks.size > 1
     klass
   end
@@ -30,8 +30,7 @@ private
   end
 
   def code_html(text)
-    %Q[<div class="code-list"><pre>
-#{text}</pre></div>]
+    %Q[<div class="code-list"><pre>#{text}</pre></div>]
   end
 
   def end_html

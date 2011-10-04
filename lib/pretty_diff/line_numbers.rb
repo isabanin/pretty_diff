@@ -20,6 +20,7 @@ class PrettyDiff::LineNumbers #:nodoc:
     else
       increase_both
     end
+    increase_middle
   end
 
   # Generate HTML presentation for a both line numbers columns. Return a string.
@@ -33,6 +34,10 @@ class PrettyDiff::LineNumbers #:nodoc:
 
   def right_column
     @right_column ||= []
+  end
+
+  def middle_column
+    @middle_column ||= []
   end
 
 private
@@ -72,6 +77,10 @@ private
   def increase_both
     left_column  << increase_or_start(:left)
     right_column << increase_or_start(:right)
+  end
+
+  def increase_middle
+    middle_column << '<a href="#">*</a>'
   end
 
   # Either increasing existing line number by one or using the initial number provided by

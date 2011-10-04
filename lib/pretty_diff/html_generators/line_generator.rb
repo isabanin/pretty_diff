@@ -7,13 +7,7 @@ class PrettyDiff::LineGenerator
   end
 
   def generate
-    if line.added?
-      added_html(content)
-    elsif line.deleted?
-      deleted_html(content)
-    else
-      not_modified_html(content)
-    end
+    wrapper_html { content }
   end
 
 private
@@ -24,22 +18,18 @@ private
 
   def wrapper_html
     if line.diff.options[:wrap_lines]
-      "<div> #{yield} </div>"
+      div_class = case
+        when line.added?
+          "gi"
+        when line.deleted?
+          "gd"
+        else
+          ""
+      end
+      "<div class='#{div_class}'> #{yield} </div>"
     else
       yield
     end
-  end
-
-  def added_html(text)
-    wrapper_html { %Q[<span class="gi">#{text}</span>] }
-  end
-
-  def deleted_html(text)
-    wrapper_html { %Q[<span class="gd">#{text}</span>] }
-  end
-
-  def not_modified_html(text)
-    wrapper_html { %Q[#{text}] }
   end
 
 end
