@@ -12,7 +12,7 @@ require 'cgi'
 # so that it doesn't interfere with the output.
 #
 class PrettyDiff::Diff
-  CHUNK_REGEXP = /@@ .+ @@\n/
+  CHUNK_REGEXP = /@@ .+ @@(.+)\n/
 
   attr_reader :input, :options
 
