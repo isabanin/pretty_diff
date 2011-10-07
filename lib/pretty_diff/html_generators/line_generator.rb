@@ -1,35 +1,22 @@
 class PrettyDiff::LineGenerator
 
-  attr_reader :line
-
-  def initialize(line)
-    @line = line
-  end
-
-  def generate
-    wrapper_html { content }
-  end
-
-private
-
-  def content
-    @_content ||= line.format
-  end
-
-  def wrapper_html
-    if line.diff.options[:wrap_lines]
-      div_class = case
-        when line.added?
-          "gi"
-        when line.deleted?
-          "gd"
-        else
-          ""
+  class << self
+    def generate(line, options = {})
+      if options[:wrap_lines]
+        div_class = case
+          when line.added?
+            "gi"
+          when line.deleted?
+            "gd"
+        end
+        line = line.format
+        class_string = div_class ? %Q[ class="#{div_class}"] : ''
+        "<div#{class_string}>#{line}</div>"
+      else
+        line.format
       end
-      "<div class='#{div_class}'> #{yield} </div>"
-    else
-      yield
     end
+
   end
 
 end

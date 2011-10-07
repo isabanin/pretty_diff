@@ -14,7 +14,6 @@ class ChunkTest < Test::Unit::TestCase
     setup do
       @diff = PrettyDiff::Diff.new read_diff('second.diff')
       @chunk = @diff.send(:chunks).first
-      @chunk.send(:find_lines!)
     end
 
     should "generate HTML without errors" do
