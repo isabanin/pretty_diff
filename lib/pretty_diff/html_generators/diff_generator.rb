@@ -1,28 +1,26 @@
 class PrettyDiff::DiffGenerator
 
-  attr_reader :diff
+  class << self
 
-  def initialize(diff)
-    @diff = diff
-  end
+    def generate(diff, options = {})
+      size = diff.chunks.size
+      chunks_html = diff.chunks.map do |chunk|
+        chunk.to_html(options.merge(:size => size))
+      end.join(chunk_separator_html).to_s
+      intro_html + chunks_html + outro_html
+    end
 
-  def generate
-    chunks_html = diff.chunks.map{|c| c.to_html}.join(chunk_separator_html).to_s
-    intro_html + chunks_html + outro_html
-  end
+    def intro_html
+      %Q[]
+    end
 
-private
+    def chunk_separator_html
+      %Q[]
+    end
 
-  def intro_html
-    %Q[]
-  end
-
-  def chunk_separator_html
-    %Q[]
-  end
-
-  def outro_html
-    %Q[]
+    def outro_html
+      %Q[]
+    end
   end
 
 end

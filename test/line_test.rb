@@ -28,7 +28,7 @@ class LineTest < Test::Unit::TestCase
       text = "		hello eptut {1, 2, 3}"
       expected_output = "    hello eptut {1, 2, 3}"
       line = new_diff(text)
-      assert_equal expected_output, line.rendered
+      assert_equal expected_output, line.format
     end
 
   end

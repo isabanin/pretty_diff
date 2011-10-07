@@ -7,14 +7,14 @@ class HtmlGeneratorTest < Test::Unit::TestCase
     context "for lines" do
       should "generate correct HTML for added line" do
         text = "+package chiro.methods.new.ones;"
-        expected_html = %Q[<span class="gi">#{text}</span>]
-        assert_equal expected_html, line_to_html(text)
+        expected_html = %Q[<div class="gi">#{text}</div>]
+        assert_equal expected_html, line_to_html(text, true)
       end
 
       should "generate correct HTML for deleted line" do
         text = '-			browser.setTimeout("50000");'
-        expected_html = %Q[<span class="gd">-      browser.setTimeout("50000");</span>]
-        assert_equal expected_html, line_to_html(text)
+        expected_html = %Q[<div class="gd">-      browser.setTimeout("50000");</div>]
+        assert_equal expected_html, line_to_html(text, true)
       end
 
       should "generate correct HTML for not modified line" do
@@ -32,8 +32,8 @@ private
     PrettyDiff::Line.new(text)
   end
 
-  def line_to_html(text)
-    new_line(text).to_html
+  def line_to_html(text, wrap = false)
+    new_line(text).to_html(:wrap_lines => wrap)
   end
 
 end

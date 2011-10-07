@@ -1,41 +1,41 @@
 class PrettyDiff::ChunkGenerator
 
-  attr_reader :chunk
+  class << self
+    def generate(chunk, options = {})
+      wrapper_klass = options[:wrapper_class] || 'code-viewer'
+      code_klass = options[:code_class] || 'code-list'
+      chunk_klass = options[:chunk_class] || 'chunk'
+      chunks_size = options[:size] || 1
+      line_options = options[:line_options] || {}
+      line_numbers_options = options[:line_numbers_options] || {}
+      start_html(wrapper_klass, chunk_klass, chunks_size) +
+      chunk.line_numbers.to_html(line_numbers_options) +
+      code_html(content(chunk, line_options), code_klass) +
+      end_html
+    end
 
-  def initialize(chunk)
-    @chunk = chunk
-  end
+    def start_html(*options)
+      %Q[<div class="#{ wrapper_class(*options) }">]
+    end
 
-  def generate
-    start_html +
-    chunk.line_numbers.to_html +
-    code_html(content) +
-    end_html
-  end
+    def code_html(text, code_class)
+      %Q[<div class="#{code_class}"><pre>#{text}</pre></div>]
+    end
 
-private
+    def end_html
+      %Q[</div>]
+    end
 
-  def content
-    chunk.lines.map{|l| l.to_html }.join("\n")
-  end
-  
-  def wrapper_class
-    klass = "code-viewer"
-    klass << ' chunk' if chunk.diff.chunks.size > 1
-    klass
-  end
+    def wrapper_class(main_klass, chunk_klass, size)
+      klass = [main_klass]
+      klass << chunk_klass if size > 1
+      klass.join(' ')
+    end
 
-  def start_html
-    %Q[<div class="#{ wrapper_class }">]
-  end
+    def content(chunk, options = {})
+      chunk.lines.map{|l| l.to_html(options) }.join("\n")
+    end
 
-  def code_html(text)
-    %Q[<div class="code-list"><pre>
-#{text}</pre></div>]
-  end
-
-  def end_html
-    %Q[</div>]
   end
 
 end
