@@ -7,7 +7,9 @@ class PrettyDiff::LineGenerator
   end
 
   def generate
-    if line.added?
+    if line.modified?
+      modified_html(content)
+    elsif line.added?
       added_html(content)
     elsif line.deleted?
       deleted_html(content)
@@ -28,6 +30,10 @@ private
     else
       yield
     end
+  end
+
+  def modified_html(text)
+    wrapper_html { %Q[<span class="gm">#{text}</span>] }
   end
 
   def added_html(text)

@@ -3,6 +3,11 @@
 #
 class PrettyDiff::Line #:nodoc:
 
+  INLINE_INSERT_START = /\{\+/
+  INLINE_INSERT_END = /\+\}/
+  INLINE_DELETE_START = /\[-/
+  INLINE_DELETE_END = /-\]/
+
   attr_reader :diff, :input
 
   def initialize(diff, input)
@@ -19,7 +24,11 @@ class PrettyDiff::Line #:nodoc:
   # Currently used for replacing Tab symbols with spaces.
   # Return a string.
   def format
-    input.gsub("\t", '  ')
+    input.gsub(INLINE_INSERT_START, '<ins>') \
+      .gsub(INLINE_INSERT_END, '</ins>') \
+      .gsub(INLINE_DELETE_START, '<del>') \
+      .gsub(INLINE_DELETE_END, '</del>') \
+      .gsub("\t", '  ')
   end
 
   # Unified Diff sometimes emit a special line at the end of the file
@@ -29,9 +38,11 @@ class PrettyDiff::Line #:nodoc:
     input =~ /\\ No newline at end of file/
   end
 
-  # Return status of the Line. Can be :added, :deleted or :not_modified.
+  # Return status of the Line. Can be :modified (for per-word diffing), :added, :deleted or :not_modified.
   def status
     case input
+    when /(#{ INLINE_DELETE_START }|#{ INLINE_INSERT_START })/
+      :modified
     when /^\+/
       :added
     when /^\-/
@@ -39,6 +50,10 @@ class PrettyDiff::Line #:nodoc:
     else
       :not_modified
     end
+  end
+
+  def modified?
+    status == :modified
   end
 
   def added?
