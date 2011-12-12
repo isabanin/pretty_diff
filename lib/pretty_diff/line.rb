@@ -21,8 +21,6 @@ class PrettyDiff::Line #:nodoc:
   end
 
   # Prepare Line contents for injection into HTML structure.
-  # Currently used for replacing Tab symbols with spaces.
-  # Return a string.
   def format
     input.gsub(INLINE_INSERT_START, '<ins>') \
       .gsub(INLINE_INSERT_END, '</ins>') \
