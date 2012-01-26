@@ -30,8 +30,7 @@ private
 
   def column_html(text)
     %Q[<div class="code-lines"><pre>
-#{text}
-</pre></div>]
+#{text}</pre></div>]
   end
 
 end
