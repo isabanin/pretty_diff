@@ -7,7 +7,7 @@ class PrettyDiff::DiffGenerator
   end
 
   def generate
-    diff.chunks.map{|c| c.to_html}.to_s
+    diff.chunks.map{|c| c.to_html}.join('')
   end
 
 end
