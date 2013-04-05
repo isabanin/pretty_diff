@@ -1,24 +1,26 @@
 require 'rubygems'
+require 'bundler'
+begin
+  Bundler.setup(:default, :development)
+rescue Bundler::BundlerError => e
+  $stderr.puts e.message
+  $stderr.puts "Run `bundle install` to install missing gems"
+  exit e.status_code
+end
 require 'rake'
 
-begin
-  require 'jeweler'
-  Jeweler::Tasks.new do |gem|
-    gem.name = "pretty_diff"
-    gem.summary = "Library for converting unified diff format into HTML listings."
-    gem.description = "PrettyDiff is a highly customizable library for creating fully featured HTML
-                       listings out of unified diff format strings.
-                       Include copy/paste-safe line numbers and built-in syntax highlighting."
-    gem.email = "ilya.sabanin@gmail.com"
-    gem.homepage = "http://github.com/isabanin/pretty_diff"
-    gem.authors = ["Ilya Sabanin"]
-    gem.add_development_dependency "shoulda", ">= 0"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
-  end
-  Jeweler::GemcutterTasks.new
-rescue LoadError
-  puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
+require 'jeweler'
+Jeweler::Tasks.new do |gem|
+  gem.name = "pretty_diff"
+  gem.summary = "Library for converting unified diff format into HTML listings."
+  gem.description = "PrettyDiff is a highly customizable library for creating fully featured HTML
+                     listings out of unified diff format strings.
+                     Include copy/paste-safe line numbers and built-in syntax highlighting."
+  gem.email = "ilya.sabanin@gmail.com"
+  gem.homepage = "http://github.com/isabanin/pretty_diff"
+  gem.authors = ["Ilya Sabanin"]
 end
+Jeweler::RubygemsDotOrgTasks.new
 
 require 'rake/testtask'
 Rake::TestTask.new(:test) do |test|
