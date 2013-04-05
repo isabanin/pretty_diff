@@ -4,14 +4,16 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "pretty_diff"
+  s.name = %q{pretty_diff}
   s.version = "0.9.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ilya Sabanin"]
-  s.date = "2013-04-05"
-  s.description = "PrettyDiff is a highly customizable library for creating fully featured HTML\n                     listings out of unified diff format strings.\n                     Include copy/paste-safe line numbers and built-in syntax highlighting."
-  s.email = "ilya.sabanin@gmail.com"
+  s.date = %q{2013-04-05}
+  s.description = %q{PrettyDiff is a highly customizable library for creating fully featured HTML
+                     listings out of unified diff format strings.
+                     Include copy/paste-safe line numbers and built-in syntax highlighting.}
+  s.email = %q{ilya.sabanin@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE",
     "README.rdoc"
@@ -42,13 +44,13 @@ Gem::Specification.new do |s|
     "test/html_generator_test.rb",
     "test/line_test.rb"
   ]
-  s.homepage = "http://github.com/isabanin/pretty_diff"
+  s.homepage = %q{http://github.com/isabanin/pretty_diff}
   s.require_paths = ["lib"]
-  s.rubygems_version = "2.0.3"
-  s.summary = "Library for converting unified diff format into HTML listings."
+  s.rubygems_version = %q{1.6.2}
+  s.summary = %q{Library for converting unified diff format into HTML listings.}
 
   if s.respond_to? :specification_version then
-    s.specification_version = 4
+    s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_development_dependency(%q<jeweler>, [">= 0"])
