@@ -1,5 +1,3 @@
-require 'cgi'
-
 #
 # Main class to interact with. In fact this is the only class you should interact with
 # when using the library.
@@ -14,34 +12,36 @@ require 'cgi'
 class PrettyDiff::Diff
   CHUNK_REGEXP = /^@@ .+ @@\n?/
 
-  attr_reader :input, :options
+  attr_reader :unified_diff, :options
 
   # Create new Diff object.
   # Accept a String in unified diff format and options hash.
   # Currrent options:
-  # * wrap_lines -- wrap each line in code block with <div> element.
+  # * generator -- your own custom implementation of HTML generator. Will use AbstractGenerator by default.
+  # * out_encoding -- convert encoding of diffs to the specififed encoding. utf-8 by default.
   def initialize(unified_diff, options={})
-    @input = escape_html(unified_diff)
+    @unified_diff = unified_diff
     @options = options
+    options[:out_encoding] ||= 'utf-8'
   end
 
   # Generate HTML presentation. Return a string.
   def to_html
-    generator.generate
+    generator.new(self).generate
   end
 
-  # Return an array of Chunk objects that Diff found in the input.
+  # Return an array of Chunk objects that Diff found in the unified_diff.
   def chunks
-    @_chunks ||= find_chunks(input)
+    @_chunks ||= find_chunks(unified_diff)
   end
 
 private
 
   def generator
-    @_generator ||= PrettyDiff::DiffGenerator.new(self)
+    options[:generator] || AbstractGenerator
   end
 
-  # Parse the input for diff chunks and initialize a Chunk object for each of them.
+  # Parse the unified_diff for diff chunks and initialize a Chunk object for each of them.
   # Return an array of Chunks.
   def find_chunks(text)
     meta_info = text.scan(CHUNK_REGEXP)
@@ -53,10 +53,6 @@ private
         chunks << PrettyDiff::Chunk.new(self, meta_info[idx], lines)
       end
     end
-  end
-
-  def escape_html(input_text)
-    CGI.escapeHTML(input_text)
   end
 
 end

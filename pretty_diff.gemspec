@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{pretty_diff}
-  s.version = "0.9.3"
+  s.version = "1.0.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ilya Sabanin"]
-  s.date = %q{2013-04-05}
+  s.date = %q{2013-04-10}
   s.description = %q{PrettyDiff is a highly customizable library for creating fully featured HTML
                      listings out of unified diff format strings.
                      Include copy/paste-safe line numbers and built-in syntax highlighting.}
@@ -29,10 +29,6 @@ Gem::Specification.new do |s|
     "lib/pretty_diff.rb",
     "lib/pretty_diff/chunk.rb",
     "lib/pretty_diff/diff.rb",
-    "lib/pretty_diff/html_generators/chunk_generator.rb",
-    "lib/pretty_diff/html_generators/diff_generator.rb",
-    "lib/pretty_diff/html_generators/line_generator.rb",
-    "lib/pretty_diff/html_generators/line_numbers_generator.rb",
     "lib/pretty_diff/line.rb",
     "lib/pretty_diff/line_numbers.rb",
     "pretty_diff.gemspec",
@@ -53,13 +49,16 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<charlock_holmes>, ["~> 0.6"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
       s.add_development_dependency(%q<builder>, [">= 0"])
     else
+      s.add_dependency(%q<charlock_holmes>, ["~> 0.6"])
       s.add_dependency(%q<jeweler>, [">= 0"])
       s.add_dependency(%q<builder>, [">= 0"])
     end
   else
+    s.add_dependency(%q<charlock_holmes>, ["~> 0.6"])
     s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<builder>, [">= 0"])
   end

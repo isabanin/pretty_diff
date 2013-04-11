@@ -2,6 +2,7 @@ GEM
   remote: http://rubygems.org/
   specs:
     builder (3.1.4)
+    charlock_holmes (0.6.9.1)
     git (1.2.5)
     jeweler (1.8.4)
       bundler (~> 1.0)
@@ -18,4 +19,5 @@ PLATFORMS
 
 DEPENDENCIES
   builder
+  charlock_holmes (~> 0.6)
   jeweler

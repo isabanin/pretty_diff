@@ -22,11 +22,6 @@ class PrettyDiff::LineNumbers #:nodoc:
     end
   end
 
-  # Generate HTML presentation for a both line numbers columns. Return a string.
-  def to_html
-    generator.generate
-  end
-
   def left_column
     @left_column ||= []
   end
@@ -36,10 +31,6 @@ class PrettyDiff::LineNumbers #:nodoc:
   end
 
 private
-
-  def generator
-    @_generator ||= PrettyDiff::LineNumbersGenerator.new(self)
-  end
 
   # Search for information about line numbers changes provided by unified diff format.
   def scan_meta(target)

@@ -3,33 +3,23 @@
 #
 class PrettyDiff::Line #:nodoc:
 
-  attr_reader :diff, :input
+  attr_reader :diff, :contents
 
-  def initialize(diff, input)
+  def initialize(diff, contents)
     @diff = diff
-    @input = input
-  end
-
-  # Generate HTML presentation for a Line. Return a string.
-  def to_html
-    generator.generate
-  end
-
-  # Prepare Line contents for injection into HTML structure.
-  def format
-    input.gsub("\t", '  ')
+    @contents = contents
   end
 
   # Unified Diff sometimes emit a special line at the end of the file
   # that we should not display in the output.
   # Return true or false.
   def ignore?
-    input =~ /\\ No newline at end of file/
+    contents =~ /\\ No newline at end of file/
   end
 
   # Return status of the Line. Can be :added, :deleted or :not_modified.
   def status
-    case input
+    case contents
     when /^\+/
       :added
     when /^\-/
@@ -49,12 +39,6 @@ class PrettyDiff::Line #:nodoc:
 
   def not_modified?
     status == :not_modified
-  end
-
-private
-
-  def generator
-    @_generator ||= PrettyDiff::LineGenerator.new(self)
   end
 
 end
