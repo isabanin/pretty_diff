@@ -10,7 +10,7 @@ module PrettyDiff
     def initialize(tgt)
       target_name = class_to_target_name(tgt.class)
       instance_variable_set("@#{target_name}", tgt)
-      class_eval do
+      self.class.class_eval do
         attr_accessor(target_name)
       end
     end
@@ -30,7 +30,7 @@ module PrettyDiff
     end
 
     def tag_options(options)
-      return if options.blank?
+      return if options.empty?
       attrs = []
       options.each_pair do |key, value|
         unless value.nil?

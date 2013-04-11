@@ -1,45 +1,34 @@
-require File.dirname(__FILE__) + '/helper'
+require File.join(File.dirname(__FILE__), 'helper')
 
-class LineTest < Test::Unit::TestCase
-  context "PrettyDiff's Line" do
+class LineTest < MiniTest::Unit::TestCase
 
-    should "indicate :added status correctly" do
-      added_line = new_diff("+package chiro.methods.new.ones;")
-      assert_equal :added, added_line.status
-    end
-
-    should "indicate :deleted status correctly" do
-      deleted_line = new_diff('-browser.setTimeout("50000");')
-      assert_equal :deleted, deleted_line.status
-    end
-
-    should "indicate :not_modified status correctly" do
-      not_modified_line = new_diff("class User < ActiveRecord::Base")
-      assert_equal :not_modified, not_modified_line.status
-    end
-
-    should "ignore trailing 'no newline' text" do
-      text = '\ No newline at end of file'
-      line = new_diff(text)
-      assert line.ignore?
-    end
-
-    should "replace tabs with spaces" do
-      text = "		hello eptut {1, 2, 3}"
-      expected_output = "    hello eptut {1, 2, 3}"
-      line = new_diff(text)
-      assert_equal expected_output, line.rendered
-    end
-
+  def setup
+    @diff = new_diff(fixture('first.diff'))
+    @lines = @diff.chunks.last.lines
   end
 
-private
-
-  def new_diff(text)
-    PrettyDiff::Line.new(text)
+  def test_contents
+    assert_equal "     color: #999;", @lines[0].contents
+    assert_equal "-  table.account-overview td .status {", @lines[3].contents
+    assert_equal "+  table.account-overview td.label.top {", @lines[4].contents
+    assert_equal "   }", @lines.last.contents
   end
 
-  def line_to_html(text)
-    new_diff(text).to_html
+  def test_ignored
+    line = PrettyDiff::Line.new(@diff, '\ No newline at end of file')
+    assert line.ignored?
   end
+
+  def test_status_added
+    assert_equal :added, @lines[4].status
+  end
+
+  def test_status_deleted
+    assert_equal :deleted, @lines[3].status
+  end
+
+  def test_status_not_modified
+    assert_equal :not_modified, @lines[0].status
+  end
+
 end

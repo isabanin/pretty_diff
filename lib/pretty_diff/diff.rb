@@ -9,50 +9,79 @@
 # Keep in mind that Diff will automatically escape all HTML tags from the intput string
 # so that it doesn't interfere with the output.
 #
-class PrettyDiff::Diff
-  CHUNK_REGEXP = /^@@ .+ @@\n?/
+module PrettyDiff
+  class Diff
+    CHUNK_REGEXP = /^@@ .+ @@\n$?/
 
-  attr_reader :unified_diff, :options
+    attr_reader :unified_diff, :generator, :out_encoding
 
-  # Create new Diff object.
-  # Accept a String in unified diff format and options hash.
-  # Currrent options:
-  # * generator -- your own custom implementation of HTML generator. Will use AbstractGenerator by default.
-  # * out_encoding -- convert encoding of diffs to the specififed encoding. utf-8 by default.
-  def initialize(unified_diff, options={})
-    @unified_diff = unified_diff
-    @options = options
-    options[:out_encoding] ||= 'utf-8'
-  end
+    #
+    # Create new Diff object.
+    # Accept a String in unified diff format and options hash.
+    # Currrent options:
+    # * generator -- your own custom implementation of HTML generator. Will use BasicGenerator by default.
+    # * out_encoding -- convert encoding of diffs to the specififed encoding. utf-8 by default.
+    #
+    def initialize(unified_diff, options={})
+      @unified_diff = unified_diff
+      @options = options
+      @out_encoding = 
+      @generator = validate_generator(options[:generator]) || BasicGenerator
+      @out_encoding = options[:out_encoding] || 'utf-8'
+    end
 
-  # Generate HTML presentation. Return a string.
-  def to_html
-    generator.new(self).generate
-  end
+    def metadata
+      @_metadata ||= unified_diff.split(CHUNK_REGEXP).first
+    end
 
-  # Return an array of Chunk objects that Diff found in the unified_diff.
-  def chunks
-    @_chunks ||= find_chunks(unified_diff)
-  end
+    def contents
+      # We have to strip metadata from the rest of the diff
+      # to enforce encoding. It's not uncommon for metadata to be in Unicode
+      # while the diff itself is in some other encoding.
+      @_contents ||= enforce_encoding(unified_diff.gsub(/\A#{Regexp.escape(metadata)}/, ''))
+    end
 
-private
+    def to_html
+      generator.new(self).generate
+    end
 
-  def generator
-    options[:generator] || AbstractGenerator
-  end
+    def chunks
+      @_chunks ||= find_chunks
+    end
 
-  # Parse the unified_diff for diff chunks and initialize a Chunk object for each of them.
-  # Return an array of Chunks.
-  def find_chunks(text)
-    meta_info = text.scan(CHUNK_REGEXP)
-    chunks = []
-    chunks.tap do
-      split = text.split(CHUNK_REGEXP)
-      split.shift
-      split.each_with_index do |lines, idx|
-        chunks << PrettyDiff::Chunk.new(self, meta_info[idx], lines)
+  private
+
+    def find_chunks
+      chunks_meta = contents.scan(CHUNK_REGEXP)
+      [].tap do |chunks|
+        split = contents.split(CHUNK_REGEXP)
+        split.shift
+        split.each_with_index do |lines, idx|
+          chunks << Chunk.new(self, chunks_meta[idx], lines)
+        end
       end
     end
-  end
 
+    def validate_generator(gen)
+      return if gen.nil?
+
+      if valid_generator?(gen)
+        gen
+      else
+        raise InvalidGenerator, "#{gen.inspect} is not a valid PrettyDiff generator"
+      end
+    end
+
+    def valid_generator?(gen)
+      gen != nil &&
+      gen.kind_of?(Class) &&
+      gen.superclass == AbstractGenerator &&
+      gen.instance_methods.include?(:generate)
+    end
+
+    def enforce_encoding(text)
+      Encoding.enforce(out_encoding, text)
+    end
+
+  end
 end

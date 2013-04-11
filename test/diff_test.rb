@@ -1,29 +1,63 @@
-require File.dirname(__FILE__) + '/helper'
-require 'cgi'
+require File.join(File.dirname(__FILE__), 'helper')
 
-class DiffTest < Test::Unit::TestCase
-  context "Pretty Diff" do
+class DiffTest < MiniTest::Unit::TestCase
+  class SuperGenerator < PrettyDiff::AbstractGenerator; def generate;end; end
 
-    setup do
-      @small_diff = PrettyDiff::Diff.new read_diff('first.diff')
-      @big_diff   = PrettyDiff::Diff.new read_diff('second.diff')
-    end
+  class NotAGenerator; end
 
-    should "generate correct amount of chunks for each diff" do
-      assert_equal 2, @small_diff.send(:chunks).size
-      assert_equal 4, @big_diff.send(:chunks).size
-    end
-
-    should "generate HTML representation without errors" do
-      assert @small_diff.to_html
-      assert @big_diff.to_html
-    end
-
-    should "escape HTML from the input string" do
-      text = "<b>Funky HTML</b>"
-      diff = PrettyDiff::Diff.new(text)
-      assert_equal "&lt;b&gt;Funky HTML&lt;/b&gt;", diff.input
-    end
-
+  def setup
+    @diff = new_diff(fixture('first.diff'))
   end
+
+  def test_chunks_normal_diff
+    assert_equal 2, @diff.chunks.size
+    @diff.chunks.each do |c|
+      assert c.kind_of?(PrettyDiff::Chunk)
+    end
+  end
+
+  def test_metadata
+    assert_equal "--- Revision 1945\n+++ Revision 1995\n", @diff.metadata
+  end
+
+  def test_contents
+    assert_equal 32, @diff.contents.lines.size
+    assert_equal "@@ -8,6 +8,10 @@\n", @diff.contents.lines.first
+    assert_equal "   }\n", @diff.contents.lines.last
+  end
+
+  def test_chunks_cp1251_diff
+    flunk
+  end
+
+  def test_default_generator
+    assert_equal 'PrettyDiff::BasicGenerator', new_diff('bla').generator.to_s
+  end
+
+  def test_custom_generator
+    assert_equal 'DiffTest::SuperGenerator', new_diff('bla', :generator => SuperGenerator).generator.to_s
+  end
+
+  def test_invalid_custom_generator
+    assert_raises PrettyDiff::InvalidGenerator do
+      new_diff('bla', :generator => NotAGenerator)
+    end
+  end
+
+  def test_default_encoding
+    assert_equal 'utf-8', new_diff('bla').out_encoding.downcase
+  end
+
+  def test_custom_encoding
+    assert_equal 'cp1251', new_diff('bla', :out_encoding => 'cp1251').out_encoding
+  end
+
+  def test_encoding_cp1251_to_utf8
+    flunk
+  end
+
+  def test_preserve_encoding
+    flunk
+  end
+
 end

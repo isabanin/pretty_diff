@@ -1,15 +1,17 @@
 require 'rubygems'
-require 'test/unit'
-require 'shoulda'
+require 'bundler/setup'
+require 'minitest/autorun'
 
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
-$LOAD_PATH.unshift(File.dirname(__FILE__))
-require 'pretty_diff'
+require File.join(File.dirname(__FILE__), '..', 'lib', 'pretty_diff')
 
-class Test::Unit::TestCase
+class MiniTest::Unit::TestCase
 
-  def read_diff(name)
-    File.read(File.join(File.dirname(__FILE__), "data", name))
+  def new_diff(*args)
+    PrettyDiff::Diff.new(*args)
+  end
+
+  def fixture(name)
+    File.read(File.join(File.dirname(__FILE__), "fixtures", name))
   end
 
 end
