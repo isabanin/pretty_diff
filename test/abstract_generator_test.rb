@@ -9,7 +9,7 @@ class AbstractGeneratorTest < MiniTest::Unit::TestCase
   def test_target_accessor
     generator = gen.new(@diff)
     assert generator.respond_to?(:diff)
-    assert generator.instance_variables.include?(:diff)
+    assert generator.instance_variables.include?(:@diff)
   end
 
   def test_stubbed_generate

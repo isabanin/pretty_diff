@@ -9,7 +9,7 @@ class DiffTest < MiniTest::Unit::TestCase
     @diff = new_diff(fixture('first.diff'))
   end
 
-  def test_chunks_normal_diff
+  def test_chunks
     assert_equal 2, @diff.chunks.size
     @diff.chunks.each do |c|
       assert c.kind_of?(PrettyDiff::Chunk)
@@ -24,10 +24,6 @@ class DiffTest < MiniTest::Unit::TestCase
     assert_equal 32, @diff.contents.lines.size
     assert_equal "@@ -8,6 +8,10 @@\n", @diff.contents.lines.first
     assert_equal "   }\n", @diff.contents.lines.last
-  end
-
-  def test_chunks_cp1251_diff
-    flunk
   end
 
   def test_default_generator
@@ -52,12 +48,10 @@ class DiffTest < MiniTest::Unit::TestCase
     assert_equal 'cp1251', new_diff('bla', :out_encoding => 'cp1251').out_encoding
   end
 
-  def test_encoding_cp1251_to_utf8
-    flunk
-  end
-
-  def test_preserve_encoding
-    flunk
+  def test_encoding_cp1251_diff
+    diff = new_diff(fixture('cp1251.diff'))
+    assert_equal 1, diff.chunks.size
+    assert diff.contents.include?('Сенат США')
   end
 
 end

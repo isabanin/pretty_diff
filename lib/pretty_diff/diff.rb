@@ -31,14 +31,21 @@ module PrettyDiff
     end
 
     def metadata
-      @_metadata ||= unified_diff.split(CHUNK_REGEXP).first
+      @_metadata ||= begin
+        ''.tap do |result|
+          unified_diff.each_line do |l|
+            result << l
+            break if l =~ /^\+\+\+ /
+          end
+        end
+      end
     end
 
     def contents
       # We have to strip metadata from the rest of the diff
       # to enforce encoding. It's not uncommon for metadata to be in Unicode
       # while the diff itself is in some other encoding.
-      @_contents ||= enforce_encoding(unified_diff.gsub(/\A#{Regexp.escape(metadata)}/, ''))
+      @_contents ||= enforce_encoding(unified_diff.lines[metadata.lines.size..-1].join(''))
     end
 
     def to_html
