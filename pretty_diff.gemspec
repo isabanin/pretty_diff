@@ -4,16 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{pretty_diff}
+  s.name = "pretty_diff"
   s.version = "1.0.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ilya Sabanin"]
-  s.date = %q{2013-04-10}
-  s.description = %q{PrettyDiff is a highly customizable library for creating fully featured HTML
-                     listings out of unified diff format strings.
-                     Include copy/paste-safe line numbers and built-in syntax highlighting.}
-  s.email = %q{ilya.sabanin@gmail.com}
+  s.date = "2013-04-12"
+  s.description = "PrettyDiff is a highly customizable library for creating fully featured HTML\n                     listings out of unified diff format strings.\n                     Include copy/paste-safe line numbers and built-in syntax highlighting."
+  s.email = "ilya.sabanin@gmail.com"
   s.extra_rdoc_files = [
     "LICENSE",
     "README.rdoc"
@@ -27,26 +25,36 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "lib/pretty_diff.rb",
+    "lib/pretty_diff/abstract_generator.rb",
+    "lib/pretty_diff/basic_generator.rb",
     "lib/pretty_diff/chunk.rb",
     "lib/pretty_diff/diff.rb",
+    "lib/pretty_diff/encoding.rb",
     "lib/pretty_diff/line.rb",
     "lib/pretty_diff/line_numbers.rb",
     "pretty_diff.gemspec",
+    "test/abstract_generator_test.rb",
+    "test/basic_generator_test.rb",
     "test/chunk_test.rb",
-    "test/data/first.diff",
-    "test/data/second.diff",
     "test/diff_test.rb",
+    "test/encoding_test.rb",
+    "test/fixtures/chinese-gbk-crlf",
+    "test/fixtures/cp1251.diff",
+    "test/fixtures/first.diff",
+    "test/fixtures/first.diff.html",
+    "test/fixtures/second.diff",
+    "test/fixtures/windows-cp1251-lf",
     "test/helper.rb",
-    "test/html_generator_test.rb",
+    "test/line_numbers_test.rb",
     "test/line_test.rb"
   ]
-  s.homepage = %q{http://github.com/isabanin/pretty_diff}
+  s.homepage = "http://github.com/isabanin/pretty_diff"
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.6.2}
-  s.summary = %q{Library for converting unified diff format into HTML listings.}
+  s.rubygems_version = "2.0.3"
+  s.summary = "Library for converting unified diff format into HTML listings."
 
   if s.respond_to? :specification_version then
-    s.specification_version = 3
+    s.specification_version = 4
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<charlock_holmes>, ["~> 0.6"])
