@@ -1,10 +1,10 @@
 module PrettyDiff
   class Line
+    attr_reader :chunk, :contents
+    attr_accessor :left_number, :right_number
 
-    attr_reader :diff, :contents
-
-    def initialize(diff, contents)
-      @diff = diff
+    def initialize(chunk, contents)
+      @chunk = chunk
       @contents = contents
     end
 
