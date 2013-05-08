@@ -11,7 +11,7 @@
 #
 module PrettyDiff
   class Diff
-    CHUNK_REGEXP = /^@@ .+ @@\n$?/
+    CHUNK_REGEXP = /^@@ .+ @@[\n]?$?/
 
     attr_reader :unified_diff, :generator, :out_encoding
 
