@@ -1,7 +1,6 @@
 require File.join(File.dirname(__FILE__), 'helper')
 
 class BasicGeneratorTest < MiniTest::Unit::TestCase
-
   def test_generated_html
     diff = new_diff(fixture('first.diff'), :generator => PrettyDiff::BasicGenerator)
     assert_equal fixture('first.diff.html'), diff.to_html
@@ -13,4 +12,8 @@ class BasicGeneratorTest < MiniTest::Unit::TestCase
     assert_equal fixture('text.diff.html'), diff.to_html
   end
 
+  def test_generated_html_without_signs
+    diff = new_diff(fixture('text.diff'), :generator => PrettyDiff::BasicGenerator, :remove_signs => true)
+    assert_equal fixture('text_without_signs.diff.html'), diff.to_html
+  end
 end
