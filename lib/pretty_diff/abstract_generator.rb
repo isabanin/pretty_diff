@@ -3,13 +3,16 @@ require 'cgi'
 module PrettyDiff
   class AbstractGenerator
 
-    def self.[](tgt)
-      new(tgt)
+    attr_reader :remove_signs
+
+    def self.[](tgt, remove_signs = false)
+      new(tgt, remove_signs)
     end
 
-    def initialize(tgt)
+    def initialize(tgt, remove_signs = false)
       target_name = class_to_target_name(tgt.class)
       instance_variable_set("@#{target_name}", tgt)
+      @remove_signs = remove_signs
       self.class.class_eval do
         attr_accessor(target_name)
       end
@@ -17,6 +20,10 @@ module PrettyDiff
 
     def generate
       raise 'Not implemented!'
+    end
+
+    def remove_signs?
+      remove_signs
     end
 
   protected
@@ -46,6 +53,10 @@ module PrettyDiff
 
     def class_to_target_name(c)
       c.to_s.split('::').last.gsub(/Gen(erator)?\z/, '').gsub(/(.)([A-Z])/,'\1_\2').downcase
+    end
+
+    def remove_signs_from_line(line)
+      line[1..-1]
     end
   end
 end

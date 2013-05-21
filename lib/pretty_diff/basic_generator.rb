@@ -3,7 +3,7 @@ module PrettyDiff
 
     def generate
       content_tag :div, :class => 'diff' do
-        diff.chunks.map{|c| ChunkGen[c].generate}.join('')
+        diff.chunks.map{|c| ChunkGen[c, remove_signs?].generate}.join('')
       end
     end
 
@@ -14,7 +14,7 @@ module PrettyDiff
         end
       end
 
-    private
+      private
 
       def numbers
         LineNumbersGen[chunk.line_numbers].generate
@@ -23,7 +23,7 @@ module PrettyDiff
       def code
         content_tag :div, :class => 'diff-code' do
           content_tag :pre do
-            chunk.lines.map{|l| LineGen[l].generate }.join("\n")        
+            chunk.lines.map{|line| LineGen[line, remove_signs?].generate}.join("\n")
           end
         end
       end
@@ -34,7 +34,7 @@ module PrettyDiff
         column(line_numbers.left_column) + column(line_numbers.right_column)
       end
 
-    private
+      private
 
       def column(clmn)
         content_tag :div, :class => 'diff-line-nums' do
@@ -55,16 +55,17 @@ module PrettyDiff
 
     class LineGen < PrettyDiff::AbstractGenerator
       def generate
+        contents = remove_signs? ? remove_signs_from_line(line.contents) : line.contents
         if line.added?
           content_tag(:span, :class => 'diff-line-add') do
-            h(line.contents)
+            h(contents)
           end
         elsif line.deleted?
           content_tag(:span, :class => 'diff-line-del') do
-            h(line.contents)
+            h(contents)
           end
         else
-          h(line.contents)
+          h(contents)
         end
       end
     end
