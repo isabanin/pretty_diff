@@ -1,0 +1,12 @@
+diff --git a/src/Data/ServiceMail/ServiceEmailBase.cs b/src/Data/ServiceMail/ServiceEmailBase.cs
+index a93dedb..5cb1240 100644
+--- a/src/Data/ServiceMail/ServiceEmailBase.cs
++++ b/src/Data/ServiceMail/ServiceEmailBase.cs
+@@ -21,7 +21,7 @@ namespace PostalService.Data.ServiceMail
+         public abstract string GenerateSubject();
+         public abstract string GenerateTextBody();
+         public abstract string GenerateHtmlBody();
+-        public abstract string GenerateTag();
++        public abstract string GenerateTag(); change on line 24
+ 
+         private readonly SystemSettings _systemSettings;
