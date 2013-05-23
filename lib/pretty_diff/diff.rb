@@ -11,7 +11,7 @@
 #
 module PrettyDiff
   class Diff
-    CHUNK_REGEXP = /^@@ .+ @@\n?$?/
+    CHUNK_REGEXP = /^@@ .+? @@.*\n?$/
 
     attr_reader :unified_diff, :generator, :out_encoding
 
@@ -61,10 +61,9 @@ module PrettyDiff
     def find_chunks
       chunks_meta = contents.scan(CHUNK_REGEXP)
       [].tap do |chunks|
-        split = contents.split(CHUNK_REGEXP)
-        split.shift
-        split.each_with_index do |lines, idx|
-          chunks << Chunk.new(self, chunks_meta[idx], lines)
+        split = contents.split(CHUNK_REGEXP)[1..-1]
+        split.each_with_index do |lines, index|
+          chunks << Chunk.new(self, chunks_meta[index], cleanup(lines))
         end
       end
     end
@@ -88,6 +87,10 @@ module PrettyDiff
 
     def enforce_encoding(text)
       Encoding.enforce(out_encoding, text)
+    end
+
+    def cleanup(line)
+      line[1..-1]
     end
 
   end
