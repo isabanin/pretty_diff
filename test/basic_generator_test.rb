@@ -21,4 +21,9 @@ class BasicGeneratorTest < MiniTest::Unit::TestCase
     diff = new_diff(fixture('blank.diff'), :generator => PrettyDiff::BasicGenerator)
     assert_equal fixture('blank.diff.html'), diff.to_html
   end
+
+  def test_generate_html_for_single_line_diffs
+    diff = new_diff(fixture('single_line.diff'), :generator => PrettyDiff::BasicGenerator)
+    assert_equal fixture('single_line.diff.html'), diff.to_html
+  end
 end
