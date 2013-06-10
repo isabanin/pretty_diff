@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__), 'helper')
+require 'helper'
 
 class LineNumbersTest < MiniTest::Unit::TestCase
 
@@ -17,4 +17,9 @@ class LineNumbersTest < MiniTest::Unit::TestCase
       @numbers.right_column
   end
 
+  def test_line_numbers
+    @diff = new_diff fixture('single_line.diff')
+    assert_equal [1, nil], @diff.chunks.last.line_numbers.left_column
+    assert_equal [nil, 1], @diff.chunks.last.line_numbers.right_column
+  end
 end
