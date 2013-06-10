@@ -33,11 +33,11 @@ module PrettyDiff
     end
 
     def left_starts_at
-      scan_meta(/^@@ -(\d+),/).to_i
+      scan_meta(/^@@ -(\d+)/).to_i
     end
 
     def right_starts_at
-      scan_meta(/\+(\d+),\d+ @@/).to_i
+      scan_meta(/\+(\d+)(?:,\d+)? @@/).to_i
     end
 
     def increase_left
