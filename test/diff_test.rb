@@ -2,6 +2,7 @@ require File.join(File.dirname(__FILE__), 'helper')
 
 class DiffTest < MiniTest::Unit::TestCase
   class SuperGenerator < PrettyDiff::AbstractGenerator; def generate;end; end
+  class UberGenerator < SuperGenerator; end
 
   class NotAGenerator; end
 
@@ -38,6 +39,8 @@ class DiffTest < MiniTest::Unit::TestCase
     assert_raises PrettyDiff::InvalidGenerator do
       new_diff('bla', :generator => NotAGenerator)
     end
+
+    assert new_diff('bla', :generator => UberGenerator)
   end
 
   def test_default_encoding
