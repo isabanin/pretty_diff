@@ -79,11 +79,11 @@ module PrettyDiff
       end
     end
 
-    def valid_generator?(gen)
-      gen != nil &&
-      gen.kind_of?(Class) &&
-      gen.superclass == AbstractGenerator &&
-      gen.instance_methods.include?(:generate)
+    def valid_generator?(generator)
+      !generator.nil? &&
+      generator.kind_of?(Class) &&
+      generator.ancestors.include?(PrettyDiff::AbstractGenerator) &&
+      generator.instance_methods.include?(:generate)
     end
 
     def enforce_encoding(text)
