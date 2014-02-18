@@ -20,3 +20,5 @@ pkg
 
 ## PROJECT::SPECIFIC
 .ruby-version
+
+.idea
