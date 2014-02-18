@@ -35,7 +35,7 @@ module PrettyDiff
         ''.tap do |result|
           unified_diff.each_line do |l|
             result << l
-            break if l =~ /^\+\+\+ /
+            break if l =~ /\+\+\+\s*/
           end
         end
       end
