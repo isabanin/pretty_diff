@@ -70,8 +70,6 @@ module PrettyDiff
     end
 
     def validate_generator(gen)
-      return if gen.nil?
-
       if valid_generator?(gen)
         gen
       else
