@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "pretty_diff"
-  s.version = "1.0.0"
+  s.version = "2.0.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ilya Sabanin"]
-  s.date = "2013-04-12"
+  s.date = "2014-02-18"
   s.description = "PrettyDiff is a highly customizable library for creating fully featured HTML\n                     listings out of unified diff format strings.\n                     Include copy/paste-safe line numbers and built-in syntax highlighting."
   s.email = "ilya.sabanin@gmail.com"
   s.extra_rdoc_files = [
@@ -38,11 +38,19 @@ Gem::Specification.new do |s|
     "test/chunk_test.rb",
     "test/diff_test.rb",
     "test/encoding_test.rb",
+    "test/fixtures/blank.diff",
+    "test/fixtures/blank.diff.html",
     "test/fixtures/chinese-gbk-crlf",
     "test/fixtures/cp1251.diff",
+    "test/fixtures/csharp.diff",
+    "test/fixtures/csharp.diff.html",
     "test/fixtures/first.diff",
     "test/fixtures/first.diff.html",
     "test/fixtures/second.diff",
+    "test/fixtures/single_line.diff",
+    "test/fixtures/single_line.diff.html",
+    "test/fixtures/text.diff",
+    "test/fixtures/text.diff.html",
     "test/fixtures/windows-cp1251-lf",
     "test/helper.rb",
     "test/line_numbers_test.rb",
