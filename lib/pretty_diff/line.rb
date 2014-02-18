@@ -34,6 +34,5 @@ module PrettyDiff
     def not_modified?
       status == :not_modified
     end
-
   end
 end

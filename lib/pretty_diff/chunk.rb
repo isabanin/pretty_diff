@@ -15,9 +15,13 @@ module PrettyDiff
 
   private
 
+    def wdiff(lines)
+      PrettyDiff::WordDiffFinder.find_word_diffs(lines)
+    end
+
     def find_lines
       [].tap do |lines|
-        contents.split(/\r?\n|\r/).each do |line_str|
+        wdiff(contents.split(/\r?\n|\r/)).each do |line_str|
           line = Line.new(self, line_str)
           next if line.ignored?
           lines << line
