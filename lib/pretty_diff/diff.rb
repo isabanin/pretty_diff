@@ -26,7 +26,7 @@ module PrettyDiff
       @unified_diff = unified_diff
       @options = options
       @out_encoding = 
-      @generator = validate_generator(options[:generator]) || BasicGenerator
+      @generator = validate_generator( options[:generator] || BasicGenerator )
       @out_encoding = options[:out_encoding] || 'utf-8'
     end
 
