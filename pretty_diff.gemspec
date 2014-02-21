@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "pretty_diff"
-  s.version = "2.0.1"
+  s.version = "2.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ilya Sabanin"]
-  s.date = "2014-02-18"
+  s.date = "2014-02-21"
   s.description = "PrettyDiff is a highly customizable library for creating fully featured HTML\n                     listings out of unified diff format strings.\n                     Include copy/paste-safe line numbers and built-in syntax highlighting."
   s.email = "ilya.sabanin@gmail.com"
   s.extra_rdoc_files = [
@@ -32,6 +32,7 @@ Gem::Specification.new do |s|
     "lib/pretty_diff/encoding.rb",
     "lib/pretty_diff/line.rb",
     "lib/pretty_diff/line_numbers.rb",
+    "lib/pretty_diff/word_diff_finder.rb",
     "pretty_diff.gemspec",
     "test/abstract_generator_test.rb",
     "test/basic_generator_test.rb",
@@ -46,15 +47,21 @@ Gem::Specification.new do |s|
     "test/fixtures/csharp.diff.html",
     "test/fixtures/first.diff",
     "test/fixtures/first.diff.html",
+    "test/fixtures/inline_change.diff",
+    "test/fixtures/mid_sized_change.diff",
+    "test/fixtures/quick_change.diff",
     "test/fixtures/second.diff",
     "test/fixtures/single_line.diff",
     "test/fixtures/single_line.diff.html",
+    "test/fixtures/space_change.diff",
+    "test/fixtures/special_characters.diff",
     "test/fixtures/text.diff",
     "test/fixtures/text.diff.html",
     "test/fixtures/windows-cp1251-lf",
     "test/helper.rb",
     "test/line_numbers_test.rb",
-    "test/line_test.rb"
+    "test/line_test.rb",
+    "test/word_diff_finder_test.rb"
   ]
   s.homepage = "http://github.com/isabanin/pretty_diff"
   s.require_paths = ["lib"]
@@ -65,23 +72,18 @@ Gem::Specification.new do |s|
     s.specification_version = 4
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<charlock_holmes>, ["~> 0.6"])
-      s.add_runtime_dependency(%q<levenshtein-ffi>, ["~> 1.0.3"])
-      s.add_runtime_dependency(%q<diff_match_patch_native>, ["~> 1.0.2"])
+      s.add_runtime_dependency(%q<pretty_diff>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
       s.add_development_dependency(%q<builder>, [">= 0"])
       s.add_development_dependency(%q<turn>, [">= 0"])
     else
-      s.add_dependency(%q<charlock_holmes>, ["~> 0.6"])
-      s.add_dependency(%q<levenshtein-ffi>, ["~> 1.0.3"])
-      s.add_dependency(%q<diff_match_patch_native>, ["~> 1.0.2"])
+      s.add_dependency(%q<pretty_diff>, [">= 0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
       s.add_dependency(%q<builder>, [">= 0"])
+      s.add_dependency(%q<turn>, [">= 0"])
     end
   else
-    s.add_dependency(%q<charlock_holmes>, ["~> 0.6"])
-    s.add_dependency(%q<levenshtein-ffi>, ["~> 1.0.3"])
-    s.add_dependency(%q<diff_match_patch_native>, ["~> 1.0.2"])
+    s.add_dependency(%q<pretty_diff>, [">= 0"])
     s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<builder>, [">= 0"])
     s.add_dependency(%q<turn>, [">= 0"])
