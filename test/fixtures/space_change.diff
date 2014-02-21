@@ -1,0 +1,9 @@
+@@ -127,7 +127,7 @@ class GroovyImage {
+       // createGraphics() needs a display, find workaround.
+       def graph = newImage.createGraphics();
+       graph.drawImage(image,new AffineTransform(1.0d,0.0d,0.0d,1.0d,left,top),null);
+-      def parsedWidth = parseValue(width,image.width,true,"100%");
++      def parsed Width = parseValue(width,image.width,true,"100%");
+       return newImage;
+   }
+ 
