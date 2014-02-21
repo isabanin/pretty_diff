@@ -73,7 +73,7 @@ module PrettyDiff
       if valid_generator?(gen)
         gen
       else
-        raise InvalidGenerator, "#{gen.inspect} is not a valid PrettyDiff generator"
+        raise InvalidGeneratorError, "#{gen.inspect} is not a valid PrettyDiff generator"
       end
     end
 

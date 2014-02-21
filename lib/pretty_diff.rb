@@ -1,5 +1,5 @@
 module PrettyDiff
-  class InvalidGenerator < Exception; end
+  class InvalidGeneratorError < Exception; end
 end
 
 def require_local(suffix)
