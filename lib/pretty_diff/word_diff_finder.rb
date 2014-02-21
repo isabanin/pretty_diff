@@ -2,7 +2,7 @@ require 'levenshtein'
 require 'diff_match_patch_native'
 
 module PrettyDiff
-  module  WordDiffFinder
+  module WordDiffFinder
     WDIFF_INSERTED_START = "\x01"
     WDIFF_INSERTED_END   = "\x02"
     WDIFF_DELETED_START  = "\x03"
