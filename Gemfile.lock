@@ -1,9 +1,18 @@
+PATH
+  remote: .
+  specs:
+    pretty_diff (2.0.1)
+      charlock_holmes (~> 0.6)
+      diff_match_patch_native (~> 1.0.2)
+      levenshtein-ffi (~> 1.0.3)
+
 GEM
   remote: http://rubygems.org/
   specs:
     addressable (2.3.5)
+    ansi (1.4.3)
     builder (3.1.4)
-    charlock_holmes (0.6.9.1)
+    charlock_holmes (0.6.9.4)
     descendants_tracker (0.0.3)
     diff_match_patch_native (1.0.2)
       rice (>= 1.4.2)
@@ -53,13 +62,14 @@ GEM
     rdoc (4.1.1)
       json (~> 1.4)
     rice (1.5.1)
+    turn (0.9.6)
+      ansi
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   builder
-  charlock_holmes (~> 0.6)
-  diff_match_patch_native (~> 1.0.2)
   jeweler
-  levenshtein-ffi (~> 1.0.3)
+  pretty_diff!
+  turn

@@ -70,6 +70,7 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<diff_match_patch_native>, ["~> 1.0.2"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
       s.add_development_dependency(%q<builder>, [">= 0"])
+      s.add_development_dependency(%q<turn>, [">= 0"])
     else
       s.add_dependency(%q<charlock_holmes>, ["~> 0.6"])
       s.add_dependency(%q<levenshtein-ffi>, ["~> 1.0.3"])
@@ -83,6 +84,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<diff_match_patch_native>, ["~> 1.0.2"])
     s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<builder>, [">= 0"])
+    s.add_dependency(%q<turn>, [">= 0"])
   end
 end
 

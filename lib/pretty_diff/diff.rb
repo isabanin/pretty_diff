@@ -26,7 +26,7 @@ module PrettyDiff
       @unified_diff = unified_diff
       @options = options
       @out_encoding = 
-      @generator = validate_generator(options[:generator]) || BasicGenerator
+      @generator = validate_generator( options[:generator] || BasicGenerator )
       @out_encoding = options[:out_encoding] || 'utf-8'
     end
 
@@ -73,7 +73,7 @@ module PrettyDiff
       if valid_generator?(gen)
         gen
       else
-        raise InvalidGenerator, "#{gen.inspect} is not a valid PrettyDiff generator"
+        raise InvalidGeneratorError, "#{gen.inspect} is not a valid PrettyDiff generator"
       end
     end
 

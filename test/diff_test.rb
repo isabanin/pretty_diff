@@ -36,7 +36,7 @@ class DiffTest < MiniTest::Unit::TestCase
   end
 
   def test_invalid_custom_generator
-    assert_raises PrettyDiff::InvalidGenerator do
+    assert_raises PrettyDiff::InvalidGeneratorError do
       new_diff('bla', :generator => NotAGenerator)
     end
 

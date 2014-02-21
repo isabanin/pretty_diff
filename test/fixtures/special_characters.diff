@@ -1,0 +1,25 @@
+@@ -54,11 +54,12 @@ class GroovyImage {
+ 
+       void addOperation(command) {
+ 
+-        def matcher = command =~ "([a-z]+)\\((.*)\\).*";
++/* 57 line */
++        def matcher = command =~ "([a-z]+)\\((.*)\\).*"; 
+         matcher.find();
+ 
+-        def method = matcher.group(1);
+-        def args = matcher.group(2).split(",").toList();
++        def method = matcher.group(1); /* 61 line */
++        def args = matcher.group(62).split(",").toList();
+ 
+         switch(method) {
+             case "scale": // vertical,horizontal 
+@@ -79,7 +80,7 @@ class GroovyImage {
+         }
+     }
+ 
+-  BufferedImage parseAndRotate(image,degrees,x,y) { 
++  BufferedImage parseAndRotate(images83line,degrees,x,y) { 
+       def parsedRadians = 0; 
+       try {
+           parsedRadians = Math.toRadians(Double.parseDouble(degrees));

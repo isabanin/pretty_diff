@@ -1,0 +1,29 @@
+@@ -130,7 +130,7 @@ class GroovyImage {
+       graph.drawImage(image,new AffineTransform(1.0d,0.0d,0.0d,1.0d,left,top),null);
+       def parsed Width = parseValue(width,image.width,true,"100%");
+       return newImage;
+-      
++
+   }
+ 
+   BufferedImage parseAndFit(image,width,height) {
+@@ -274,15 +274,17 @@ class GroovyImage {
+           switch(type) {
+               case "px":
+                   return decimalValue / size;
+-              case "%":
++              case "percent":
+                   return decimalValue / 100;
++              case "%":
++                  return decimalValue / 100;                 
+               default:
+                   return decimalValue;
+           }
+       }
+   }
+ 
+-    Object argsLength(args,length) {
++    Object argsLength(args,lengths) {
+         if(args.size() < length) {
+             while(args.size() < length) {
+                 args.add("change");

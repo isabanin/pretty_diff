@@ -8,10 +8,10 @@ class LineTest < MiniTest::Unit::TestCase
   end
 
   def test_contents
-    assert_equal "     color: #999;", @lines[0].contents
-    assert_equal "-  table.account-overview td .status {", @lines[3].contents
-    assert_equal "+  table.account-overview td.label.top {", @lines[4].contents
-    assert_equal "   }", @lines.last.contents
+    assert_equal "     color: #999;", strip_word_indicators(@lines[0].contents)
+    assert_equal "-  table.account-overview td .status {", strip_word_indicators(@lines[3].contents)
+    assert_equal "+  table.account-overview td.label.top {", strip_word_indicators(@lines[4].contents)
+    assert_equal "   }", strip_word_indicators(@lines.last.contents)
   end
 
   def test_ignored
