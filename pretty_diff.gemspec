@@ -72,18 +72,24 @@ Gem::Specification.new do |s|
     s.specification_version = 4
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<pretty_diff>, [">= 0"])
+      s.add_runtime_dependency(%q<charlock_holmes>, ["~> 0.6"])
+      s.add_runtime_dependency(%q<levenshtein-ffi>, ["~> 1.0.3"])
+      s.add_runtime_dependency(%q<diff_match_patch_native>, ["~> 1.0.2"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
       s.add_development_dependency(%q<builder>, [">= 0"])
       s.add_development_dependency(%q<turn>, [">= 0"])
     else
-      s.add_dependency(%q<pretty_diff>, [">= 0"])
+      s.add_dependency(%q<charlock_holmes>, ["~> 0.6"])
+      s.add_dependency(%q<levenshtein-ffi>, ["~> 1.0.3"])
+      s.add_dependency(%q<diff_match_patch_native>, ["~> 1.0.2"])
       s.add_dependency(%q<jeweler>, [">= 0"])
       s.add_dependency(%q<builder>, [">= 0"])
       s.add_dependency(%q<turn>, [">= 0"])
     end
   else
-    s.add_dependency(%q<pretty_diff>, [">= 0"])
+    s.add_dependency(%q<charlock_holmes>, ["~> 0.6"])
+    s.add_dependency(%q<levenshtein-ffi>, ["~> 1.0.3"])
+    s.add_dependency(%q<diff_match_patch_native>, ["~> 1.0.2"])
     s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<builder>, [">= 0"])
     s.add_dependency(%q<turn>, [">= 0"])
