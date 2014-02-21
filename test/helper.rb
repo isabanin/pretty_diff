@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'bundler/setup'
 require 'minitest/autorun'
+require 'turn'
 
 require File.join(File.dirname(__FILE__), '..', 'lib', 'pretty_diff')
 

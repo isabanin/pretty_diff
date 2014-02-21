@@ -10,6 +10,7 @@ GEM
   remote: http://rubygems.org/
   specs:
     addressable (2.3.5)
+    ansi (1.4.3)
     builder (3.1.4)
     charlock_holmes (0.6.9.4)
     descendants_tracker (0.0.3)
@@ -61,6 +62,8 @@ GEM
     rdoc (4.1.1)
       json (~> 1.4)
     rice (1.5.1)
+    turn (0.9.6)
+      ansi
 
 PLATFORMS
   ruby
@@ -69,3 +72,4 @@ DEPENDENCIES
   builder
   jeweler
   pretty_diff!
+  turn
