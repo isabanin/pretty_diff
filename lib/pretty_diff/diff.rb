@@ -13,7 +13,7 @@ module PrettyDiff
   class Diff
     CHUNK_REGEXP = /^@@ .+? @@.*\n?$/
 
-    attr_reader :unified_diff, :generator, :out_encoding
+    attr_reader :unified_diff, :generator, :out_encoding, :options
 
     #
     # Create new Diff object.
@@ -24,10 +24,9 @@ module PrettyDiff
     #
     def initialize(unified_diff, options={})
       @unified_diff = unified_diff
-      @options = options
-      @out_encoding = 
-      @generator = validate_generator( options[:generator] || BasicGenerator )
+      @generator = validate_generator(options[:generator] || BasicGenerator)
       @out_encoding = options[:out_encoding] || 'utf-8'
+      @options = options
     end
 
     def metadata
