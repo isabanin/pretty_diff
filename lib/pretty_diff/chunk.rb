@@ -21,7 +21,14 @@ module PrettyDiff
 
     def find_lines
       [].tap do |lines|
-        wdiff(contents.split(/\r?\n|\r/)).each do |line_str|
+        plain_lines = contents.split(/\r?\n|\r/)
+        wdiff(contents.split(/\r?\n|\r/)).each_with_index do |line_str, idx|
+          begin
+            line_str =~ //
+          rescue ArgumentError
+            line_str = plain_lines[idx]
+          end
+
           line = Line.new(self, line_str)
           next if line.ignored?
           lines << line
