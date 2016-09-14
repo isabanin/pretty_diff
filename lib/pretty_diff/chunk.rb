@@ -17,6 +17,10 @@ module PrettyDiff
 
     def wdiff(lines)
       PrettyDiff::WordDiffFinder.find_word_diffs(lines)
+
+    rescue StandardError
+      # Screw per-word diffing, let's at least render the diff.
+      lines  
     end
 
     def find_lines
