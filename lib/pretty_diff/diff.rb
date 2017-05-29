@@ -25,20 +25,12 @@ module PrettyDiff
     def initialize(unified_diff, options={})
       @unified_diff = unified_diff
       @options = options
-      @out_encoding = 
       @generator = validate_generator(options[:generator]) || BasicGenerator
       @out_encoding = options[:out_encoding] || 'utf-8'
     end
 
     def metadata
-      @_metadata ||= begin
-        ''.tap do |result|
-          unified_diff.each_line do |l|
-            result << l
-            break if l =~ /^\+\+\+ /
-          end
-        end
-      end
+      @metadata ||= generate_metadata
     end
 
     def contents
@@ -94,5 +86,14 @@ module PrettyDiff
       line[1..-1]
     end
 
+    def generate_metadata
+      puts "generate_metadata invoked from pretty_diff gem"
+      ''.tap do |result|
+        unified_diff.each_line do |line|
+          result << line
+          break if line =~ /^\+\+\+ /
+        end
+      end
+    end
   end
 end
