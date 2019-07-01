@@ -16,6 +16,11 @@ module PrettyDiff
       added_next_line_already = false
 
       lines.each_with_index do |line, idx|
+        if line.size > 1000
+          # This is too big, not worth the time.
+          next
+        end
+
         if added_next_line_already
           added_next_line_already = false
           next
