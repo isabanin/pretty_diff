@@ -17,7 +17,8 @@ module PrettyDiff
     end
 
     def detect(str)
-      if detected = CharlockHolmes::EncodingDetector.detect(str)
+      detected = CharlockHolmes::EncodingDetector.detect(str)
+      if detected && detected[:confidence] > 50
         detected[:encoding]
       end
     end
