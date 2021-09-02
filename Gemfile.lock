@@ -31,7 +31,6 @@ GEM
       nokogiri (>= 1.5.10)
       rake
       rdoc
-    json (1.8.1)
     jwt (0.1.11)
       multi_json (>= 1.5)
     levenshtein-ffi (1.0.3)
@@ -51,8 +50,7 @@ GEM
       rack (~> 1.2)
     rack (1.5.2)
     rake (10.1.1)
-    rdoc (4.1.1)
-      json (~> 1.4)
+    rdoc (6.3.2)
     rice (1.6.0)
     turn (0.9.6)
       ansi
