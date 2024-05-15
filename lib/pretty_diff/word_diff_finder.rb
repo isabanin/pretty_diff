@@ -18,6 +18,8 @@ module PrettyDiff
       lines.each_with_index do |line, idx|
         if line.size > 1000
           # This is too big, not worth the time.
+          # Return the line as is.
+          result << line
           next
         end
 
