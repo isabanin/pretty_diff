@@ -4,7 +4,7 @@ GEM
     addressable (2.3.5)
     ansi (1.4.3)
     builder (3.1.4)
-    charlock_holmes (0.6.9.4)
+    charlock_holmes (0.7.7)
     descendants_tracker (0.0.3)
     diff_match_patch_native (1.0.2)
       rice (>= 1.4.2)
@@ -62,7 +62,7 @@ PLATFORMS
 
 DEPENDENCIES
   builder
-  charlock_holmes (~> 0.6)
+  charlock_holmes (< 0.8)
   diff_match_patch_native (~> 1.0.2)
   jeweler
   levenshtein-ffi (~> 1.0.3)
